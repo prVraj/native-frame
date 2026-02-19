@@ -6,7 +6,6 @@
  */
 
 const { chromium } = require('playwright');
-const { AxePuppeteer } = require('@axe-core/playwright');
 const path = require('path');
 
 const EXAMPLES = [

@@ -58,6 +58,16 @@ async function runTests() {
   let passed = 0;
   let failed = 0;
 
+  // Show a specific component section (all others are hidden by default on load)
+  async function showSection(componentId) {
+    await page.evaluate((id) => {
+      document.querySelectorAll('.page').forEach(p => p.classList.add('hidden'));
+      const section = document.getElementById(`${id}-section`);
+      if (section) section.classList.remove('hidden');
+    }, componentId);
+    await page.waitForTimeout(100);
+  }
+
   function logTest(name, success, error) {
     if (success) {
       console.log('  PASS: ' + name);
@@ -74,6 +84,7 @@ async function runTests() {
   console.log('Modal Tests:');
 
   try {
+    await showSection('modal');
     const modalTrigger = await page.$('[data-modal-open="demo-modal"]');
     await modalTrigger.click();
     await page.waitForTimeout(300);
@@ -107,6 +118,7 @@ async function runTests() {
   console.log('Toast Tests:');
 
   try {
+    await showSection('toast');
     await page.evaluate(() => NF.toast.dismissAll());
     await page.waitForTimeout(300);
 
@@ -155,6 +167,7 @@ async function runTests() {
   console.log('Accordion Tests:');
 
   try {
+    await showSection('accordion');
     const accordionTrigger = await page.$('.nf-accordion-trigger');
 
     const initialExpanded = await accordionTrigger.getAttribute('aria-expanded');
@@ -186,6 +199,7 @@ async function runTests() {
   console.log('Tabs Tests:');
 
   try {
+    await showSection('tabs');
     const firstTab = await page.$('.nf-tab[aria-selected="true"]');
     const secondTab = await page.$('.nf-tab[aria-selected="false"]');
 
@@ -225,6 +239,7 @@ async function runTests() {
   console.log('Tooltip Tests:');
 
   try {
+    await showSection('tooltip');
     const tooltipTrigger = await page.$('[data-tooltip]');
 
     await tooltipTrigger.hover();
