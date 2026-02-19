@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — NativeFrame App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../dist/nativeframe.min.css">
+  <style>
+    /* Sidebar + main layout */
+    .app-layout {
+      display: flex;
+      min-height: 100vh;
+    }
+    .app-sidebar {
+      width: 220px;
+      min-width: 220px;
+      background-color: var(--nf-color-bg-subtle);
+      border-right: 1px solid var(--nf-color-border);
+      display: flex;
+      flex-direction: column;
+      padding: var(--nf-spacing-4);
+    }
+    .app-sidebar-logo {
+      font-size: var(--nf-font-size-xl);
+      font-weight: var(--nf-font-weight-bold);
+      color: var(--nf-color-primary);
+      padding: var(--nf-spacing-2) 0;
+      margin-bottom: var(--nf-spacing-6);
+    }
+    .app-sidebar nav {
+      display: flex;
+      flex-direction: column;
+      gap: var(--nf-spacing-1);
+      flex: 1;
+    }
+    .app-sidebar nav a {
+      text-decoration: none;
+    }
+    .app-sidebar-footer {
+      margin-top: auto;
+      padding-top: var(--nf-spacing-4);
+      border-top: 1px solid var(--nf-color-border);
+      font-size: var(--nf-font-size-sm);
+      color: var(--nf-color-text-muted);
+    }
+    .app-main {
+      flex: 1;
+      padding: var(--nf-spacing-8);
+      overflow-y: auto;
+    }
+    .app-main h1 {
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      font-weight: var(--nf-font-weight-bold);
+      margin-bottom: var(--nf-spacing-6);
+    }
+    /* Stat card value */
+    .stat-value {
+      font-size: 2rem;
+      font-weight: var(--nf-font-weight-bold);
+      line-height: var(--nf-line-height-tight);
+    }
+    .stat-label {
+      font-size: var(--nf-font-size-sm);
+      color: var(--nf-color-text-muted);
+    }
+    /* Form layout */
+    .form-group {
+      margin-bottom: var(--nf-spacing-4);
+    }
+    .form-row {
+      display: flex;
+      align-items: center;
+      gap: var(--nf-spacing-3);
+    }
+    /* Activity list */
+    .activity-item {
+      display: flex;
+      align-items: center;
+      gap: var(--nf-spacing-3);
+      padding: var(--nf-spacing-3) 0;
+      border-bottom: 1px solid var(--nf-color-border);
+    }
+    .activity-item:last-child {
+      border-bottom: none;
+    }
+    .activity-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .activity-dot-success { background-color: var(--nf-color-success); }
+    .activity-dot-warning { background-color: var(--nf-color-warning); }
+    .activity-dot-info    { background-color: var(--nf-color-info); }
+    .activity-dot-danger  { background-color: var(--nf-color-danger); }
+    .activity-text {
+      font-size: var(--nf-font-size-sm);
+      color: var(--nf-color-text);
+    }
+    .activity-time {
+      font-size: var(--nf-font-size-xs);
+      color: var(--nf-color-text-muted);
+      margin-left: auto;
+      white-space: nowrap;
+    }
+    /* Danger zone */
+    .danger-zone {
+      margin-top: var(--nf-spacing-8);
+      padding: var(--nf-spacing-5);
+      border: 1px solid var(--nf-color-danger);
+      border-radius: var(--nf-radius-md);
+      background-color: var(--nf-color-danger-subtle);
+    }
+    .danger-zone h3 {
+      font-size: var(--nf-font-size-lg);
+      font-weight: var(--nf-font-weight-semibold);
+      color: var(--nf-color-danger);
+      margin-bottom: var(--nf-spacing-2);
+    }
+    .danger-zone p {
+      font-size: var(--nf-font-size-sm);
+      color: var(--nf-color-text-muted);
+      margin-bottom: var(--nf-spacing-4);
+    }
+  </style>
+</head>
+<body>
+
+<div class="app-layout">
+
+  <!-- ================================================================
+       Sidebar
+       ================================================================ -->
+  <aside class="app-sidebar">
+    <div class="app-sidebar-logo">NativeFrame</div>
+    <nav>
+      <a href="#" class="nf-btn nf-btn-ghost" style="justify-content: flex-start;">Dashboard</a>
+      <a href="#" class="nf-btn nf-btn-ghost" style="justify-content: flex-start;">Projects</a>
+      <a href="#" class="nf-btn nf-btn-ghost" style="justify-content: flex-start;">Team</a>
+      <a href="#" class="nf-btn nf-btn-ghost" style="justify-content: flex-start;">Reports</a>
+      <a href="#" class="nf-btn nf-btn-ghost" style="justify-content: flex-start;">Settings</a>
+    </nav>
+    <div class="app-sidebar-footer">
+      <div class="nf-flex" style="align-items: center; gap: var(--nf-spacing-2);">
+        <span class="nf-avatar nf-avatar-sm">VP</span>
+        <span>Vraj P.</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ================================================================
+       Main Content
+       ================================================================ -->
+  <main class="app-main">
+    <h1>Dashboard</h1>
+
+    <!-- Tabs -->
+    <div class="nf-tabs" role="tablist">
+      <button class="nf-tab" role="tab" aria-selected="true" aria-controls="panel-overview" tabindex="0">Overview</button>
+      <button class="nf-tab" role="tab" aria-selected="false" aria-controls="panel-settings" tabindex="-1">Settings</button>
+      <button class="nf-tab" role="tab" aria-selected="false" aria-controls="panel-activity" tabindex="-1">Activity</button>
+    </div>
+
+    <!-- ============================================================
+         Tab Panel: Overview
+         ============================================================ -->
+    <div class="nf-tab-panel" id="panel-overview" role="tabpanel">
+      <div class="nf-grid nf-md-grid-cols-3" style="margin-top: var(--nf-spacing-4);">
+
+        <div class="nf-card nf-card-bordered">
+          <div class="nf-card-body">
+            <div class="stat-label">Total Users</div>
+            <div class="stat-value">12,482</div>
+            <span class="nf-badge nf-badge-success nf-badge-pill" style="margin-top: var(--nf-spacing-2);">+14%</span>
+          </div>
+        </div>
+
+        <div class="nf-card nf-card-bordered">
+          <div class="nf-card-body">
+            <div class="stat-label">Revenue</div>
+            <div class="stat-value">$84,320</div>
+            <span class="nf-badge nf-badge-success nf-badge-pill" style="margin-top: var(--nf-spacing-2);">+8.2%</span>
+          </div>
+        </div>
+
+        <div class="nf-card nf-card-bordered">
+          <div class="nf-card-body">
+            <div class="stat-label">Active Projects</div>
+            <div class="stat-value">37</div>
+            <span class="nf-badge nf-badge-warning nf-badge-pill" style="margin-top: var(--nf-spacing-2);">-2</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ============================================================
+         Tab Panel: Settings
+         ============================================================ -->
+    <div class="nf-tab-panel" id="panel-settings" role="tabpanel" hidden>
+      <div class="nf-card nf-card-bordered" style="margin-top: var(--nf-spacing-4); max-width: 540px;">
+        <div class="nf-card-header">
+          <h2 style="font-size: var(--nf-font-size-lg); font-weight: var(--nf-font-weight-semibold); margin: 0;">Account Settings</h2>
+        </div>
+        <div class="nf-card-body">
+          <form id="settings-form" onsubmit="return false;">
+
+            <!-- Text input -->
+            <div class="form-group">
+              <label class="nf-label" for="display-name">Display Name</label>
+              <input id="display-name" type="text" class="nf-input" placeholder="Your name" value="Vraj Parikh">
+            </div>
+
+            <!-- Text input with error -->
+            <div class="form-group">
+              <label class="nf-label" for="email-field">Email</label>
+              <input id="email-field" type="email" class="nf-input nf-input-error" placeholder="you@example.com" value="not-an-email">
+              <p class="nf-error-text">Please enter a valid email address.</p>
+            </div>
+
+            <!-- Select -->
+            <div class="form-group">
+              <label class="nf-label" for="timezone-select">Timezone</label>
+              <div class="nf-select-wrapper">
+                <select id="timezone-select" class="nf-select">
+                  <option value="">Choose a timezone</option>
+                  <option value="utc">UTC</option>
+                  <option value="est" selected>Eastern (EST)</option>
+                  <option value="pst">Pacific (PST)</option>
+                  <option value="cet">Central European (CET)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Checkbox -->
+            <div class="form-group">
+              <label class="nf-checkbox-label">
+                <input type="checkbox" class="nf-checkbox" checked>
+                Receive email notifications
+              </label>
+            </div>
+
+            <!-- Toggle -->
+            <div class="form-group">
+              <div class="form-row">
+                <input type="checkbox" class="nf-toggle" id="dark-mode-toggle">
+                <label class="nf-label" for="dark-mode-toggle" style="margin-bottom: 0;">Dark Mode</label>
+              </div>
+            </div>
+
+            <!-- Save button -->
+            <button type="button" id="save-btn" class="nf-btn nf-btn-primary">Save</button>
+
+          </form>
+        </div>
+      </div>
+
+      <!-- Danger Zone -->
+      <div class="danger-zone" style="max-width: 540px;">
+        <h3>Danger Zone</h3>
+        <p>Permanently delete your account and all associated data. This action cannot be undone.</p>
+        <button class="nf-btn nf-btn-danger" data-modal-open="delete-modal">Delete Account</button>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         Tab Panel: Activity
+         ============================================================ -->
+    <div class="nf-tab-panel" id="panel-activity" role="tabpanel" hidden>
+      <div class="nf-card nf-card-bordered" style="margin-top: var(--nf-spacing-4); max-width: 600px;">
+        <div class="nf-card-header">
+          <h2 style="font-size: var(--nf-font-size-lg); font-weight: var(--nf-font-weight-semibold); margin: 0;">Recent Activity</h2>
+        </div>
+        <div class="nf-card-body" style="padding-top: 0;">
+
+          <div class="activity-item">
+            <span class="activity-dot activity-dot-success"></span>
+            <span class="activity-text">Deployed <strong>v2.4.1</strong> to production</span>
+            <span class="activity-time">2 min ago</span>
+          </div>
+
+          <div class="activity-item">
+            <span class="activity-dot activity-dot-info"></span>
+            <span class="activity-text">New team member <strong>Alex Chen</strong> joined</span>
+            <span class="activity-time">1 hr ago</span>
+          </div>
+
+          <div class="activity-item">
+            <span class="activity-dot activity-dot-warning"></span>
+            <span class="activity-text">Build <strong>#1847</strong> has warnings</span>
+            <span class="activity-time">3 hrs ago</span>
+          </div>
+
+          <div class="activity-item">
+            <span class="activity-dot activity-dot-danger"></span>
+            <span class="activity-text">API error rate exceeded threshold</span>
+            <span class="activity-time">5 hrs ago</span>
+          </div>
+
+          <div class="activity-item">
+            <span class="activity-dot activity-dot-success"></span>
+            <span class="activity-text">Database migration completed</span>
+            <span class="activity-time">Yesterday</span>
+          </div>
+
+          <div class="activity-item">
+            <span class="activity-dot activity-dot-info"></span>
+            <span class="activity-text">Updated project settings for <strong>Dashboard</strong></span>
+            <span class="activity-time">Yesterday</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- ================================================================
+     Delete Confirmation Modal
+     ================================================================ -->
+<div class="nf-modal" id="delete-modal" hidden>
+  <div class="nf-modal-overlay"></div>
+  <div class="nf-modal-content">
+    <div class="nf-modal-header">
+      <h2 class="nf-modal-title">Delete Account</h2>
+      <button class="nf-modal-close" aria-label="Close">&times;</button>
+    </div>
+    <div class="nf-modal-body">
+      <p style="margin: 0; color: var(--nf-color-text-muted);">
+        Are you sure you want to delete your account? All of your data will be permanently removed. This action cannot be undone.
+      </p>
+    </div>
+    <div class="nf-modal-footer">
+      <button class="nf-btn nf-btn-secondary" data-modal-close="delete-modal">Cancel</button>
+      <button class="nf-btn nf-btn-danger" data-modal-close="delete-modal" id="confirm-delete-btn">Delete</button>
+    </div>
+  </div>
+</div>
+
+<!-- NativeFrame JS (auto-inits tabs, modal, tooltip, accordion) -->
+<script src="../dist/nativeframe.min.js"></script>
+
+<script>
+  // Save button triggers a success toast
+  document.getElementById('save-btn').addEventListener('click', function () {
+    NF.toast.show('Settings saved!', { type: 'success' });
+  });
+
+  // Confirm delete button triggers an error toast as feedback
+  document.getElementById('confirm-delete-btn').addEventListener('click', function () {
+    NF.toast.show('Account deleted.', { type: 'error' });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+{
+  "name": "nativeframe",
+  "version": "0.1.0",
+  "description": "Lightweight, framework-agnostic UI library. Pure HTML, CSS, and vanilla JS.",
+  "main": "dist/nativeframe.js",
+  "style": "dist/nativeframe.css",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "serve": "node scripts/serve.js",
+    "test": "node tests/interactions/smoke.test.js",
+    "lint:css": "stylelint src/css/**/*.css",
+    "audit": "node tests/accessibility/axe-audit.js"
+  },
+  "keywords": ["ui", "css", "components", "vanilla-js", "framework-agnostic", "accessible"],
+  "license": "MIT",
+  "devDependencies": {
+    "stylelint": "^15.0.0",
+    "stylelint-config-standard": "^34.0.0",
+    "clean-css": "^5.3.0",
+    "terser": "^5.0.0",
+    "axe-core": "^4.0.0",
+    "playwright": "^1.40.0"
+  }
+}

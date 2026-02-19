@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NativeFrame Documentation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../dist/nativeframe.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked@15.0.7/marked.min.js"
+          integrity="sha384-H+hy9ULve6xfxRkWIh/YOtvDdpXgV2fmAGQkIDTxIgZwNoaoBal14Di2YTMR6MzR"
+          crossorigin="anonymous"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: var(--nf-font-family);
+      color: var(--nf-color-text);
+      background-color: var(--nf-color-bg);
+      line-height: var(--nf-line-height-base);
+      display: flex;
+      min-height: 100vh;
+    }
+    
+    /* Sidebar */
+    .docs-sidebar {
+      width: 260px;
+      min-width: 260px;
+      background-color: var(--nf-color-bg-subtle);
+      border-right: 1px solid var(--nf-color-border);
+      overflow-y: auto;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+    }
+    
+    .docs-sidebar-header {
+      padding: var(--nf-spacing-4);
+      border-bottom: 1px solid var(--nf-color-border);
+    }
+    
+    .docs-logo {
+      font-size: var(--nf-font-size-xl);
+      font-weight: var(--nf-font-weight-bold);
+      color: var(--nf-color-primary);
+      margin-bottom: var(--nf-spacing-3);
+    }
+    
+    .docs-search {
+      width: 100%;
+      padding: var(--nf-spacing-2) var(--nf-spacing-3);
+      border: 1px solid var(--nf-color-border);
+      border-radius: var(--nf-radius-md);
+      background-color: var(--nf-color-bg);
+      font-size: var(--nf-font-size-sm);
+    }
+    
+    .docs-nav {
+      padding: var(--nf-spacing-4);
+    }
+    
+    .docs-nav-section {
+      margin-bottom: var(--nf-spacing-4);
+    }
+    
+    .docs-nav-title {
+      font-size: var(--nf-font-size-xs);
+      font-weight: var(--nf-font-weight-semibold);
+      color: var(--nf-color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: var(--nf-spacing-2);
+    }
+    
+    .docs-nav-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--nf-spacing-1);
+    }
+    
+    .docs-nav-link {
+      display: block;
+      padding: var(--nf-spacing-2) var(--nf-spacing-3);
+      font-size: var(--nf-font-size-sm);
+      color: var(--nf-color-text);
+      text-decoration: none;
+      border-radius: var(--nf-radius-sm);
+      transition: var(--nf-transition-base);
+    }
+    
+    .docs-nav-link:hover {
+      background-color: var(--nf-color-bg);
+    }
+    
+    .docs-nav-link.active {
+      background-color: var(--nf-color-primary-subtle);
+      color: var(--nf-color-primary);
+      font-weight: var(--nf-font-weight-medium);
+    }
+    
+    .docs-nav-link.hidden {
+      display: none;
+    }
+    
+    /* Main content */
+    .docs-main {
+      flex: 1;
+      overflow-y: auto;
+    }
+    
+    .docs-header {
+      background-color: var(--nf-color-bg);
+      border-bottom: 1px solid var(--nf-color-border);
+      padding: var(--nf-spacing-4);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    
+    .docs-content {
+      max-width: 800px;
+      padding: var(--nf-spacing-8) var(--nf-spacing-6);
+      margin: 0 auto;
+    }
+    
+    /* Markdown content styling */
+    .docs-content h1 {
+      font-size: clamp(1.75rem, 3vw, 2.5rem);
+      font-weight: var(--nf-font-weight-bold);
+      margin-bottom: var(--nf-spacing-4);
+      line-height: var(--nf-line-height-tight);
+    }
+    
+    .docs-content h2 {
+      font-size: var(--nf-font-size-xl);
+      font-weight: var(--nf-font-weight-semibold);
+      margin-top: var(--nf-spacing-8);
+      margin-bottom: var(--nf-spacing-3);
+      padding-bottom: var(--nf-spacing-2);
+      border-bottom: 1px solid var(--nf-color-border);
+    }
+    
+    .docs-content h3 {
+      font-size: var(--nf-font-size-lg);
+      font-weight: var(--nf-font-weight-semibold);
+      margin-top: var(--nf-spacing-6);
+      margin-bottom: var(--nf-spacing-3);
+    }
+    
+    .docs-content p {
+      margin-bottom: var(--nf-spacing-4);
+      line-height: var(--nf-line-height-base);
+    }
+    
+    .docs-content ul, .docs-content ol {
+      margin-bottom: var(--nf-spacing-4);
+      padding-left: var(--nf-spacing-6);
+    }
+    
+    .docs-content li {
+      margin-bottom: var(--nf-spacing-2);
+    }
+    
+    .docs-content a {
+      color: var(--nf-color-primary);
+      text-decoration: underline;
+    }
+    
+    .docs-content a:hover {
+      color: var(--nf-color-primary-hover);
+    }
+    
+    .docs-content code {
+      font-family: var(--nf-font-family-mono);
+      font-size: 0.9em;
+      background-color: var(--nf-color-bg-muted);
+      padding: 0.125rem 0.375rem;
+      border-radius: var(--nf-radius-sm);
+    }
+    
+    .docs-content pre {
+      position: relative;
+      background-color: var(--nf-color-bg-muted);
+      padding: var(--nf-spacing-4);
+      border-radius: var(--nf-radius-md);
+      overflow-x: auto;
+      margin-bottom: var(--nf-spacing-4);
+    }
+    
+    .docs-content pre code {
+      background-color: transparent;
+      padding: 0;
+    }
+    
+    .docs-content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: var(--nf-spacing-4);
+      font-size: var(--nf-font-size-sm);
+    }
+    
+    .docs-content th {
+      background-color: var(--nf-color-bg-subtle);
+      padding: var(--nf-spacing-2) var(--nf-spacing-3);
+      text-align: left;
+      font-weight: var(--nf-font-weight-semibold);
+      border-bottom: 2px solid var(--nf-color-border);
+    }
+    
+    .docs-content td {
+      padding: var(--nf-spacing-2) var(--nf-spacing-3);
+      border-bottom: 1px solid var(--nf-color-border);
+    }
+    
+    .docs-content hr {
+      border: none;
+      border-top: 1px solid var(--nf-color-border);
+      margin: var(--nf-spacing-6) 0;
+    }
+    
+    /* Copy button */
+    .copy-btn {
+      position: absolute;
+      top: var(--nf-spacing-2);
+      right: var(--nf-spacing-2);
+      padding: var(--nf-spacing-1) var(--nf-spacing-2);
+      font-size: var(--nf-font-size-xs);
+      background-color: var(--nf-color-bg);
+      border: 1px solid var(--nf-color-border);
+      border-radius: var(--nf-radius-sm);
+      cursor: pointer;
+      opacity: 0;
+      transition: var(--nf-transition-fast);
+    }
+    
+    .docs-content pre:hover .copy-btn {
+      opacity: 1;
+    }
+    
+    .copy-btn:hover {
+      background-color: var(--nf-color-bg-subtle);
+    }
+    
+    /* Loading */
+    .docs-loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--nf-spacing-12);
+    }
+    
+    /* Mobile responsiveness */
+    @media (max-width: 768px) {
+      .docs-sidebar {
+        position: fixed;
+        left: -260px;
+        transition: left 0.3s ease;
+        z-index: 1000;
+      }
+      
+      .docs-sidebar.open {
+        left: 0;
+      }
+      
+      .docs-content {
+        padding: var(--nf-spacing-6) var(--nf-spacing-4);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="docs-sidebar">
+    <div class="docs-sidebar-header">
+      <div class="docs-logo">NativeFrame</div>
+      <input 
+        type="search" 
+        class="docs-search" 
+        id="docs-search" 
+        placeholder="Search docs..."
+        autocomplete="off"
+      >
+    </div>
+    
+    <nav class="docs-nav">
+      <div class="docs-nav-section">
+        <div class="docs-nav-title">Getting Started</div>
+        <ul class="docs-nav-list">
+          <li><a href="#introduction" class="docs-nav-link" data-md="introduction.md">Introduction</a></li>
+          <li><a href="#installation" class="docs-nav-link" data-md="installation.md">Installation</a></li>
+          <li><a href="#quick-start" class="docs-nav-link" data-md="quick-start.md">Quick Start</a></li>
+          <li><a href="#theming" class="docs-nav-link" data-md="theming.md">Theming</a></li>
+          <li><a href="#javascript-api" class="docs-nav-link" data-md="javascript-api.md">JavaScript API</a></li>
+          <li><a href="#accessibility" class="docs-nav-link" data-md="accessibility.md">Accessibility</a></li>
+        </ul>
+      </div>
+      
+      <div class="docs-nav-section">
+        <div class="docs-nav-title">Components</div>
+        <ul class="docs-nav-list">
+          <li><a href="#button" class="docs-nav-link" data-md="components/button.md">Button</a></li>
+          <li><a href="#input" class="docs-nav-link" data-md="components/input.md">Input</a></li>
+          <li><a href="#select" class="docs-nav-link" data-md="components/select.md">Select</a></li>
+          <li><a href="#checkbox-radio" class="docs-nav-link" data-md="components/checkbox-radio.md">Checkbox & Radio</a></li>
+          <li><a href="#toggle" class="docs-nav-link" data-md="components/toggle.md">Toggle</a></li>
+          <li><a href="#card" class="docs-nav-link" data-md="components/card.md">Card</a></li>
+          <li><a href="#modal" class="docs-nav-link" data-md="components/modal.md">Modal</a></li>
+          <li><a href="#tooltip" class="docs-nav-link" data-md="components/tooltip.md">Tooltip</a></li>
+          <li><a href="#toast" class="docs-nav-link" data-md="components/toast.md">Toast</a></li>
+          <li><a href="#tabs" class="docs-nav-link" data-md="components/tabs.md">Tabs</a></li>
+          <li><a href="#accordion" class="docs-nav-link" data-md="components/accordion.md">Accordion</a></li>
+          <li><a href="#badge" class="docs-nav-link" data-md="components/badge.md">Badge</a></li>
+          <li><a href="#avatar" class="docs-nav-link" data-md="components/avatar.md">Avatar</a></li>
+          <li><a href="#skeleton" class="docs-nav-link" data-md="components/skeleton.md">Skeleton</a></li>
+          <li><a href="#layout" class="docs-nav-link" data-md="components/layout.md">Layout</a></li>
+        </ul>
+      </div>
+      
+      <div class="docs-nav-section">
+        <div class="docs-nav-title">Examples</div>
+        <ul class="docs-nav-list">
+          <li><a href="../examples/quick-start.html" target="_blank" class="docs-nav-link">Quick Start →</a></li>
+          <li><a href="../examples/landing-page.html" target="_blank" class="docs-nav-link">Landing Page →</a></li>
+          <li><a href="../examples/simple-app.html" target="_blank" class="docs-nav-link">Simple App →</a></li>
+        </ul>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="docs-main">
+    <header class="docs-header">
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <button class="nf-btn nf-btn-ghost nf-btn-icon" id="mobile-menu-btn" style="display: none;">
+          ☰
+        </button>
+        <h1 style="font-size: 1.125rem; font-weight: 600; margin: 0;">Documentation</h1>
+      </div>
+      <button class="nf-btn nf-btn-ghost" id="theme-toggle" aria-label="Toggle dark mode">
+        🌙
+      </button>
+    </header>
+    
+    <div class="docs-content" id="docs-content">
+      <div class="docs-loading">
+        <div class="nf-skeleton nf-skeleton-text" style="width: 60%;"></div>
+      </div>
+    </div>
+  </main>
+
+  <script src="../dist/nativeframe.min.js"></script>
+  <script>
+    // Theme toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const htmlEl = document.documentElement;
+    
+    // Restore theme preference
+    if (localStorage.getItem('theme') === 'dark') {
+      htmlEl.classList.add('nf-dark');
+      themeToggle.textContent = '☀️';
+    }
+    
+    themeToggle.addEventListener('click', () => {
+      htmlEl.classList.toggle('nf-dark');
+      const isDark = htmlEl.classList.contains('nf-dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      themeToggle.textContent = isDark ? '☀️' : '🌙';
+    });
+    
+    // Search functionality
+    const searchInput = document.getElementById('docs-search');
+    const navLinks = document.querySelectorAll('.docs-nav-link');
+    
+    searchInput.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase();
+      
+      navLinks.forEach(link => {
+        const text = link.textContent.toLowerCase();
+        if (text.includes(query)) {
+          link.classList.remove('hidden');
+        } else {
+          link.classList.add('hidden');
+        }
+      });
+    });
+    
+    // Load markdown content
+    const contentEl = document.getElementById('docs-content');
+    
+    async function loadMarkdown(file) {
+      try {
+        const response = await fetch(file);
+        if (!response.ok) throw new Error('File not found');
+        
+        const markdown = await response.text();
+        const html = marked.parse(markdown);
+
+        // Sanitize: strip dangerous tags that could execute JS
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        doc.querySelectorAll('script,iframe,object,embed,form,base,meta,link[rel="import"]').forEach(n => n.remove());
+        doc.querySelectorAll('*').forEach(n => {
+          for (const attr of Array.from(n.attributes)) {
+            if (attr.name.startsWith('on') || (attr.name === 'href' && attr.value.trim().toLowerCase().startsWith('javascript:'))) {
+              n.removeAttribute(attr.name);
+            }
+          }
+        });
+        contentEl.innerHTML = doc.body.innerHTML;
+        
+        // Add copy buttons to code blocks
+        contentEl.querySelectorAll('pre').forEach(pre => {
+          const btn = document.createElement('button');
+          btn.className = 'copy-btn';
+          btn.textContent = 'Copy';
+          btn.addEventListener('click', () => {
+            const code = pre.querySelector('code')?.textContent || pre.textContent;
+            navigator.clipboard.writeText(code).then(() => {
+              btn.textContent = 'Copied!';
+              setTimeout(() => btn.textContent = 'Copy', 2000);
+            });
+          });
+          pre.style.position = 'relative';
+          pre.appendChild(btn);
+        });
+        
+        // Scroll to top
+        document.querySelector('.docs-main').scrollTop = 0;
+      } catch (error) {
+        contentEl.innerHTML = '<p>Error loading documentation. Please check that the file exists.</p>';
+      }
+    }
+    
+    // Handle navigation clicks
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        const mdFile = link.dataset.md;
+        if (!mdFile) return; // Skip external links
+        
+        e.preventDefault();
+        
+        // Update active state
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+        
+        // Load content
+        loadMarkdown(mdFile);
+        
+        // Update URL
+        window.location.hash = link.getAttribute('href').substring(1);
+      });
+    });
+    
+    // Load initial page based on hash or default to introduction
+    function loadInitialPage() {
+      const hash = window.location.hash.substring(1) || 'introduction';
+      const link = document.querySelector(`a[href="#${CSS.escape(hash)}"]`);
+      
+      if (link && link.dataset.md) {
+        link.classList.add('active');
+        loadMarkdown(link.dataset.md);
+      } else {
+        // Default to introduction
+        const introLink = document.querySelector('a[data-md="introduction.md"]');
+        introLink.classList.add('active');
+        loadMarkdown('introduction.md');
+      }
+    }
+    
+    // Handle browser back/forward
+    window.addEventListener('hashchange', loadInitialPage);
+    
+    // Load on page load
+    loadInitialPage();
+    
+    // Mobile menu toggle (for small screens)
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const sidebar = document.querySelector('.docs-sidebar');
+    
+    if (window.innerWidth <= 768) {
+      mobileMenuBtn.style.display = 'block';
+    }
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+    });
+    
+    // Close sidebar when clicking outside on mobile
+    document.addEventListener('click', (e) => {
+      if (window.innerWidth <= 768 && 
+          !sidebar.contains(e.target) && 
+          !mobileMenuBtn.contains(e.target)) {
+        sidebar.classList.remove('open');
+      }
+    });
+    
+    // Update mobile menu visibility on resize
+    window.addEventListener('resize', () => {
+      if (window.innerWidth <= 768) {
+        mobileMenuBtn.style.display = 'block';
+      } else {
+        mobileMenuBtn.style.display = 'none';
+        sidebar.classList.remove('open');
+      }
+    });
+  </script>
+
+</body>
+</html>

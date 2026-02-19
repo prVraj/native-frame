@@ -1,0 +1,66 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af # v4.1.0
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Install Playwright browsers
+      run: npx playwright install chromium
+    
+    - name: Build
+      run: npm run build
+    
+    - name: Lint CSS
+      run: npm run lint:css
+    
+    - name: Run interaction tests
+      run: npm test
+    
+    - name: Run accessibility audit
+      run: npm run audit
+    
+    - name: Check bundle sizes
+      run: |
+        echo "Checking bundle sizes..."
+        CSS_SIZE=$(stat -f%z dist/nativeframe.min.css 2>/dev/null || stat -c%s dist/nativeframe.min.css)
+        JS_SIZE=$(stat -f%z dist/nativeframe.min.js 2>/dev/null || stat -c%s dist/nativeframe.min.js)
+        
+        CSS_GZIP=$(gzip -c dist/nativeframe.min.css | wc -c | tr -d ' ')
+        JS_GZIP=$(gzip -c dist/nativeframe.min.js | wc -c | tr -d ' ')
+        
+        echo "CSS (minified): $CSS_SIZE bytes"
+        echo "CSS (gzipped): $CSS_GZIP bytes"
+        echo "JS (minified): $JS_SIZE bytes"
+        echo "JS (gzipped): $JS_GZIP bytes"
+        
+        # Fail if bundles exceed limits (20KB for CSS, 10KB for JS)
+        if [ $CSS_GZIP -gt 20480 ]; then
+          echo "❌ CSS bundle too large: ${CSS_GZIP} bytes (limit: 20KB)"
+          exit 1
+        fi
+        
+        if [ $JS_GZIP -gt 10240 ]; then
+          echo "❌ JS bundle too large: ${JS_GZIP} bytes (limit: 10KB)"
+          exit 1
+        fi
+        
+        echo "✅ Bundle sizes within limits"

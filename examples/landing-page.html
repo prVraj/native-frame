@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NativeFrame — The Modern CSS Component Library</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../dist/nativeframe.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', var(--nf-font-family); color: var(--nf-color-text); background-color: var(--nf-color-bg); line-height: var(--nf-line-height-base); }
+    a { text-decoration: none; color: inherit; }
+
+    /* Nav */
+    .landing-nav { position: sticky; top: 0; z-index: var(--nf-z-sticky); background-color: var(--nf-color-bg); border-bottom: 1px solid var(--nf-color-border); }
+    .landing-nav .nf-flex { align-items: center; justify-content: space-between; padding: var(--nf-spacing-3) 0; }
+    .landing-logo { font-size: var(--nf-font-size-xl); font-weight: var(--nf-font-weight-bold); color: var(--nf-color-primary); }
+    .nav-links { list-style: none; display: flex; gap: var(--nf-spacing-6); align-items: center; }
+    .nav-links a { font-size: var(--nf-font-size-base); font-weight: var(--nf-font-weight-medium); color: var(--nf-color-text-muted); transition: var(--nf-transition-base); }
+    .nav-links a:hover { color: var(--nf-color-text); }
+
+    /* Hero */
+    .landing-hero { padding: var(--nf-spacing-12) 0; }
+    .hero-headline { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: var(--nf-font-weight-bold); line-height: var(--nf-line-height-tight); margin-bottom: var(--nf-spacing-4); }
+    .hero-subtitle { font-size: var(--nf-font-size-lg); color: var(--nf-color-text-muted); max-width: 600px; margin: 0 auto var(--nf-spacing-8) auto; }
+
+    /* Sections */
+    .landing-section { padding: var(--nf-spacing-12) 0; }
+    .section-heading { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: var(--nf-font-weight-bold); margin-bottom: var(--nf-spacing-2); }
+    .section-subheading { font-size: var(--nf-font-size-lg); color: var(--nf-color-text-muted); margin-bottom: var(--nf-spacing-8); }
+
+    /* Feature icon placeholder */
+    .feature-icon { width: 48px; height: 48px; border-radius: var(--nf-radius-md); background-color: var(--nf-color-primary-subtle); color: var(--nf-color-primary); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: var(--nf-font-weight-bold); margin-bottom: var(--nf-spacing-4); }
+    .feature-title { font-size: var(--nf-font-size-xl); font-weight: var(--nf-font-weight-semibold); margin-bottom: var(--nf-spacing-2); }
+    .feature-desc { color: var(--nf-color-text-muted); font-size: var(--nf-font-size-base); }
+
+    /* Testimonials */
+    .testimonial-quote { font-size: var(--nf-font-size-lg); font-style: italic; color: var(--nf-color-text); margin-bottom: var(--nf-spacing-4); line-height: var(--nf-line-height-base); }
+    .testimonial-author { font-size: var(--nf-font-size-sm); font-weight: var(--nf-font-weight-semibold); color: var(--nf-color-text-muted); }
+
+    /* CTA Banner */
+    .cta-banner { background-color: var(--nf-color-primary-subtle); border-radius: var(--nf-radius-xl); padding: var(--nf-spacing-12) var(--nf-spacing-6); }
+    .cta-headline { font-size: clamp(1.5rem, 3vw, 2.25rem); font-weight: var(--nf-font-weight-bold); margin-bottom: var(--nf-spacing-3); }
+    .cta-subtitle { font-size: var(--nf-font-size-lg); color: var(--nf-color-text-muted); margin-bottom: var(--nf-spacing-6); }
+
+    /* Footer */
+    .landing-footer { padding: var(--nf-spacing-6) 0; border-top: 1px solid var(--nf-color-border); color: var(--nf-color-text-muted); font-size: var(--nf-font-size-sm); }
+  </style>
+</head>
+<body>
+
+  <!-- ====== Nav ====== -->
+  <nav class="landing-nav">
+    <div class="nf-container">
+      <div class="nf-flex">
+        <a href="#" class="landing-logo">NativeFrame</a>
+        <ul class="nav-links">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#testimonials">Docs</a></li>
+          <li><a href="#" target="_blank">GitHub</a></li>
+          <li><a href="#cta" class="nf-btn nf-btn-primary nf-btn-sm">Get Started</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ====== Hero ====== -->
+  <section class="landing-hero">
+    <div class="nf-container nf-text-center">
+      <div class="nf-stack" style="align-items: center;">
+        <span class="nf-badge nf-badge-primary nf-badge-pill">v1.0 Now Available</span>
+        <h1 class="hero-headline">Build beautiful interfaces<br>without the framework tax</h1>
+        <p class="hero-subtitle">
+          NativeFrame is a lightweight, dependency-free CSS component library that gives you
+          production-ready UI primitives. No build step. No JavaScript overhead. Just clean, semantic HTML.
+        </p>
+        <div class="nf-cluster" style="justify-content: center;">
+          <a href="#cta" class="nf-btn nf-btn-primary nf-btn-lg">Get Started</a>
+          <a href="#features" class="nf-btn nf-btn-outline nf-btn-lg">Explore Features</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="nf-container"><hr class="nf-divider"></div>
+
+  <!-- ====== Features ====== -->
+  <section id="features" class="landing-section">
+    <div class="nf-container">
+      <div class="nf-text-center">
+        <h2 class="section-heading">Everything you need, nothing you don't</h2>
+        <p class="section-subheading">
+          Thoughtfully designed components that work together out of the box.
+        </p>
+      </div>
+
+      <div class="nf-grid nf-md-grid-cols-3">
+
+        <!-- Feature 1 -->
+        <div class="nf-card nf-card-bordered">
+          <div class="nf-card-body">
+            <div class="feature-icon">T</div>
+            <h3 class="feature-title">Design Tokens</h3>
+            <p class="feature-desc">
+              A complete token system for colors, spacing, typography, and shadows.
+              Customize the entire theme by editing a handful of CSS custom properties.
+            </p>
+          </div>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="nf-card nf-card-bordered">
+          <div class="nf-card-body">
+            <div class="feature-icon">L</div>
+            <h3 class="feature-title">Flexible Layouts</h3>
+            <p class="feature-desc">
+              Grid, flex, stack, and cluster primitives handle any layout pattern.
+              Responsive breakpoint classes adapt seamlessly from mobile to desktop.
+            </p>
+          </div>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="nf-card nf-card-bordered">
+          <div class="nf-card-body">
+            <div class="feature-icon">A</div>
+            <h3 class="feature-title">Accessible by Default</h3>
+            <p class="feature-desc">
+              Every interactive component ships with proper focus indicators, ARIA patterns,
+              and keyboard support. Accessibility is baked in, not bolted on.
+            </p>
+          </div>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="nf-card nf-card-bordered">
+          <div class="nf-card-body">
+            <div class="feature-icon">D</div>
+            <h3 class="feature-title">Dark Mode Ready</h3>
+            <p class="feature-desc">
+              Automatic dark mode via media query or manual toggle with a single CSS class.
+              All components adapt without extra effort on your part.
+            </p>
+          </div>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="nf-card nf-card-bordered">
+          <div class="nf-card-body">
+            <div class="feature-icon">Z</div>
+            <h3 class="feature-title">Zero Dependencies</h3>
+            <p class="feature-desc">
+              No React, no Vue, no build pipeline required. Drop in one CSS file and
+              one optional JS file. Works with any stack or no stack at all.
+            </p>
+          </div>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="nf-card nf-card-bordered">
+          <div class="nf-card-body">
+            <div class="feature-icon">S</div>
+            <h3 class="feature-title">Tiny Footprint</h3>
+            <p class="feature-desc">
+              The entire library weighs under 10 KB gzipped. No bloated utility classes
+              or unused selectors. Ship exactly what your users need.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="nf-container"><hr class="nf-divider"></div>
+
+  <!-- ====== Testimonials ====== -->
+  <section id="testimonials" class="landing-section">
+    <div class="nf-container">
+      <div class="nf-text-center">
+        <h2 class="section-heading">Loved by developers</h2>
+        <p class="section-subheading">
+          Hear from the people who build with NativeFrame every day.
+        </p>
+      </div>
+
+      <div class="nf-grid nf-md-grid-cols-3">
+
+        <!-- Testimonial 1 -->
+        <div class="nf-card nf-card-bordered">
+          <div class="nf-card-body nf-stack">
+            <p class="testimonial-quote">
+              "NativeFrame replaced our entire Tailwind setup. The components just work,
+              and our HTML is actually readable again. Shipping features has never been faster."
+            </p>
+            <div>
+              <p class="testimonial-author">Sarah Chen</p>
+              <span style="font-size: var(--nf-font-size-sm); color: var(--nf-color-text-muted);">Lead Engineer at Stackline</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="nf-card nf-card-bordered">
+          <div class="nf-card-body nf-stack">
+            <p class="testimonial-quote">
+              "I prototype in NativeFrame and the prototypes end up becoming the production code.
+              That is how good the defaults are. Truly zero-to-polished in minutes."
+            </p>
+            <div>
+              <p class="testimonial-author">Marcus Rivera</p>
+              <span style="font-size: var(--nf-font-size-sm); color: var(--nf-color-text-muted);">Founder of Launchpad UI</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="nf-card nf-card-bordered">
+          <div class="nf-card-body nf-stack">
+            <p class="testimonial-quote">
+              "Dark mode, responsive grids, accessible modals — all out of the box.
+              We dropped three npm packages the day we adopted NativeFrame."
+            </p>
+            <div>
+              <p class="testimonial-author">Aiko Tanaka</p>
+              <span style="font-size: var(--nf-font-size-sm); color: var(--nf-color-text-muted);">Frontend Architect at Novabit</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="nf-spacer-8"></div>
+
+  <!-- ====== CTA Banner ====== -->
+  <section id="cta" class="landing-section">
+    <div class="nf-container">
+      <div class="cta-banner nf-text-center">
+        <h2 class="cta-headline">Ready to simplify your front end?</h2>
+        <p class="cta-subtitle">
+          Get up and running in under a minute. One link tag is all it takes.
+        </p>
+        <a href="#" class="nf-btn nf-btn-primary nf-btn-lg">Download NativeFrame</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="nf-spacer-8"></div>
+
+  <!-- ====== Footer ====== -->
+  <footer class="landing-footer">
+    <div class="nf-container nf-text-center">
+      <p>&copy; 2026 NativeFrame. Released under the MIT License.</p>
+    </div>
+  </footer>
+
+  <script src="../dist/nativeframe.min.js"></script>
+</body>
+</html>

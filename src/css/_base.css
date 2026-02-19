@@ -1,0 +1,128 @@
+/* ==========================================================================
+   Base Styles — Scoped to .nf-prose / .nf-content
+   ========================================================================== */
+
+.nf-prose h1,
+.nf-content h1 {
+  font-size: clamp(1.875rem, 2.5vw, 2.25rem);
+  font-weight: var(--nf-font-weight-semibold);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--nf-color-text);
+  margin-bottom: var(--nf-spacing-5);
+}
+
+.nf-prose h2,
+.nf-content h2 {
+  font-size: clamp(1.5rem, 2vw, 1.875rem);
+  font-weight: var(--nf-font-weight-semibold);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--nf-color-text);
+  margin-bottom: var(--nf-spacing-4);
+}
+
+.nf-prose h3,
+.nf-content h3 {
+  font-size: var(--nf-font-size-xl);
+  font-weight: var(--nf-font-weight-semibold);
+  line-height: 1.3;
+  color: var(--nf-color-text);
+  margin-bottom: var(--nf-spacing-3);
+}
+
+.nf-prose h4,
+.nf-content h4 {
+  font-size: var(--nf-font-size-lg);
+  font-weight: var(--nf-font-weight-medium);
+  line-height: 1.35;
+  color: var(--nf-color-text);
+  margin-bottom: var(--nf-spacing-2);
+}
+
+.nf-prose p,
+.nf-content p {
+  color: var(--nf-color-text-secondary);
+  margin-bottom: var(--nf-spacing-4);
+}
+
+.nf-prose a,
+.nf-content a {
+  color: var(--nf-color-primary);
+  text-decoration: none;
+  font-weight: var(--nf-font-weight-medium);
+}
+
+.nf-prose a:hover,
+.nf-content a:hover {
+  color: var(--nf-color-primary-hover);
+  text-decoration: underline;
+}
+
+.nf-prose code,
+.nf-content code {
+  font-family: var(--nf-font-family-mono);
+  font-size: 0.875em;
+  background-color: var(--nf-color-bg-muted);
+  padding: 0.125em 0.375em;
+  border-radius: var(--nf-radius-sm);
+  border: 1px solid var(--nf-color-border);
+}
+
+.nf-prose pre,
+.nf-content pre {
+  font-family: var(--nf-font-family-mono);
+  font-size: var(--nf-font-size-sm);
+  background-color: var(--nf-gray-900);
+  color: var(--nf-gray-50);
+  padding: var(--nf-spacing-4);
+  border-radius: var(--nf-radius-md);
+  overflow-x: auto;
+  margin-bottom: var(--nf-spacing-4);
+  border: 1px solid var(--nf-gray-800);
+}
+
+.nf-prose pre code,
+.nf-content pre code {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  border: none;
+  color: inherit;
+}
+
+.nf-prose ul,
+.nf-content ul,
+.nf-prose ol,
+.nf-content ol {
+  padding-left: var(--nf-spacing-6);
+  margin-bottom: var(--nf-spacing-4);
+  color: var(--nf-color-text-secondary);
+}
+
+.nf-prose li,
+.nf-content li {
+  margin-bottom: var(--nf-spacing-2);
+}
+
+.nf-prose blockquote,
+.nf-content blockquote {
+  border-left: 3px solid var(--nf-color-primary);
+  padding-left: var(--nf-spacing-4);
+  color: var(--nf-color-text-muted);
+  margin-bottom: var(--nf-spacing-4);
+  font-style: italic;
+}
+
+.nf-prose hr,
+.nf-content hr {
+  border: none;
+  border-top: 1px solid var(--nf-color-border);
+  margin: var(--nf-spacing-8) 0;
+}
+
+.nf-prose strong,
+.nf-content strong {
+  font-weight: var(--nf-font-weight-semibold);
+  color: var(--nf-color-text);
+}

@@ -1,0 +1,159 @@
+/* ==========================================================================
+   Select Component — Untitled UI Style
+   ========================================================================== */
+
+.nf-select-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.nf-select-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid var(--nf-color-text-muted);
+  transform: translateY(-50%);
+  pointer-events: none;
+  transition: var(--nf-transition-base);
+}
+
+/* ==========================================================================
+   Base Select
+   ========================================================================== */
+
+.nf-select {
+  display: block;
+  width: 100%;
+  padding: 10px 14px;
+  padding-right: 40px;
+  font-family: inherit;
+  font-size: var(--nf-font-size-base);
+  line-height: 24px;
+  color: var(--nf-color-text);
+  background: var(--nf-color-bg);
+  border: 1px solid var(--nf-color-border-strong);
+  border-radius: var(--nf-radius-md);
+  box-shadow: var(--nf-shadow-xs);
+  transition: border-color var(--nf-transition-base),
+    box-shadow var(--nf-transition-base);
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+}
+
+.nf-select:focus {
+  outline: none;
+  border-color: var(--nf-color-primary);
+  box-shadow: var(--nf-ring-primary), var(--nf-shadow-xs);
+}
+
+.nf-select-wrapper:focus-within::after {
+  border-top-color: var(--nf-color-primary);
+}
+
+.nf-select:disabled,
+.nf-select[disabled] {
+  background: var(--nf-color-bg-muted);
+  color: var(--nf-color-text-placeholder);
+  cursor: not-allowed;
+}
+
+.nf-select-wrapper:has(.nf-select:disabled)::after {
+  opacity: 0.4;
+}
+
+.nf-select[aria-readonly="true"],
+.nf-select.nf-select-readonly {
+  background: var(--nf-color-bg-muted);
+  pointer-events: none;
+}
+
+/* --- Error --- */
+
+.nf-select.nf-select-error {
+  border-color: var(--nf-color-danger);
+}
+
+.nf-select.nf-select-error:focus {
+  border-color: var(--nf-color-danger);
+  box-shadow: var(--nf-ring-danger), var(--nf-shadow-xs);
+}
+
+.nf-select-wrapper:has(.nf-select-error)::after {
+  border-top-color: var(--nf-color-danger);
+}
+
+/* --- Success --- */
+
+.nf-select.nf-select-success {
+  border-color: var(--nf-color-success);
+}
+
+.nf-select.nf-select-success:focus {
+  border-color: var(--nf-color-success);
+  box-shadow: 0 0 0 4px rgba(3, 152, 85, 0.24), var(--nf-shadow-xs);
+}
+
+.nf-select-wrapper:has(.nf-select-success)::after {
+  border-top-color: var(--nf-color-success);
+}
+
+/* ==========================================================================
+   Sizes
+   ========================================================================== */
+
+.nf-select-sm {
+  padding: 8px 12px;
+  padding-right: 36px;
+  font-size: var(--nf-font-size-sm);
+  line-height: 20px;
+}
+
+.nf-select-wrapper:has(.nf-select-sm)::after {
+  right: 12px;
+  border-left-width: 4px;
+  border-right-width: 4px;
+  border-top-width: 4px;
+}
+
+.nf-select-lg {
+  padding: 12px 16px;
+  padding-right: 44px;
+  font-size: var(--nf-font-size-base);
+  line-height: 24px;
+}
+
+.nf-select-wrapper:has(.nf-select-lg)::after {
+  right: 16px;
+  border-left-width: 6px;
+  border-right-width: 6px;
+  border-top-width: 6px;
+}
+
+/* ==========================================================================
+   Full Width
+   ========================================================================== */
+
+.nf-select-full {
+  width: 100%;
+}
+
+.nf-select-wrapper.nf-select-full {
+  display: block;
+  width: 100%;
+}
+
+/* ==========================================================================
+   Placeholder
+   ========================================================================== */
+
+.nf-select option[value=""] {
+  color: var(--nf-color-text-placeholder);
+}

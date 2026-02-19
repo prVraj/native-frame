@@ -1,0 +1,59 @@
+/* ==========================================================================
+   Skeleton — Untitled UI Style
+   ========================================================================== */
+
+@keyframes nf-skeleton-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.nf-skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--nf-gray-100) 25%,
+    var(--nf-gray-50) 50%,
+    var(--nf-gray-100) 75%
+  );
+  background-size: 200% 100%;
+  animation: nf-skeleton-shimmer 1.8s ease-in-out infinite;
+  border-radius: var(--nf-radius-md);
+}
+
+/* Text skeleton line */
+.nf-skeleton-text {
+  height: 1em;
+  width: 100%;
+  margin-bottom: var(--nf-spacing-2);
+}
+
+/* Circle skeleton (avatar placeholder) */
+.nf-skeleton-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+/* Rectangle skeleton (image/card placeholder) */
+.nf-skeleton-rect {
+  height: 120px;
+  width: 100%;
+}
+
+/* Header skeleton */
+.nf-skeleton-heading {
+  height: 1.5em;
+  width: 60%;
+  margin-bottom: var(--nf-spacing-3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nf-skeleton {
+    animation: none;
+    background: var(--nf-gray-100);
+    background-size: auto;
+  }
+}

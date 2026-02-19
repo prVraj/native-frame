@@ -1,0 +1,85 @@
+/* ==========================================================================
+   Accordion — Untitled UI Style
+   ========================================================================== */
+
+.nf-accordion {
+  border: 1px solid var(--nf-color-border);
+  border-radius: var(--nf-radius-lg);
+  overflow: hidden;
+}
+
+.nf-accordion-item + .nf-accordion-item {
+  border-top: 1px solid var(--nf-color-border);
+}
+
+.nf-accordion-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--nf-spacing-5) var(--nf-spacing-6);
+  font-size: var(--nf-font-size-base);
+  font-weight: var(--nf-font-weight-medium);
+  color: var(--nf-color-text);
+  background: var(--nf-color-bg);
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background var(--nf-transition-base);
+  line-height: 1.5;
+}
+
+.nf-accordion-trigger:hover {
+  background: var(--nf-color-bg-subtle);
+}
+
+.nf-accordion-trigger:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 2px var(--nf-color-primary-ring);
+}
+
+/* Chevron icon via ::after */
+.nf-accordion-trigger::after {
+  content: "";
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  margin-left: var(--nf-spacing-4);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23667085' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  transition: transform var(--nf-transition-base);
+  border: none;
+}
+
+.nf-accordion-trigger[aria-expanded="true"]::after {
+  transform: rotate(180deg);
+}
+
+.nf-accordion-panel {
+  overflow: hidden;
+  transition: max-height var(--nf-transition-slow);
+}
+
+.nf-accordion-panel > div,
+.nf-accordion-panel > p {
+  padding: 0 var(--nf-spacing-6) var(--nf-spacing-5);
+  color: var(--nf-color-text-muted);
+  font-size: var(--nf-font-size-base);
+  line-height: 1.5;
+}
+
+.nf-accordion-item.is-open .nf-accordion-trigger {
+  font-weight: var(--nf-font-weight-semibold);
+}
+
+/* Borderless variant */
+.nf-accordion-borderless {
+  border: none;
+  border-radius: 0;
+}
+
+.nf-accordion-borderless .nf-accordion-item + .nf-accordion-item {
+  border-top: 1px solid var(--nf-color-border);
+}

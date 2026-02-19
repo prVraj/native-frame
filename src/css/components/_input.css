@@ -1,0 +1,259 @@
+/* ==========================================================================
+   Input Component — Untitled UI Style
+   ========================================================================== */
+
+/* --- Label --- */
+
+.nf-label {
+  display: block;
+  margin-bottom: var(--nf-spacing-1);
+  font-size: var(--nf-font-size-sm);
+  font-weight: var(--nf-font-weight-medium);
+  color: var(--nf-color-text-secondary);
+}
+
+/* --- Help & Error Text --- */
+
+.nf-help-text {
+  font-size: var(--nf-font-size-sm);
+  color: var(--nf-color-text-muted);
+  margin-top: var(--nf-spacing-1);
+}
+
+.nf-error-text {
+  font-size: var(--nf-font-size-sm);
+  color: var(--nf-color-danger);
+  margin-top: var(--nf-spacing-1);
+}
+
+/* ==========================================================================
+   Base Input
+   ========================================================================== */
+
+.nf-input {
+  display: block;
+  width: 100%;
+  padding: 10px 14px;
+  font-family: inherit;
+  font-size: var(--nf-font-size-base);
+  line-height: 24px;
+  color: var(--nf-color-text);
+  background: var(--nf-color-bg);
+  border: 1px solid var(--nf-color-border-strong);
+  border-radius: var(--nf-radius-md);
+  box-shadow: var(--nf-shadow-xs);
+  transition: border-color var(--nf-transition-base),
+    box-shadow var(--nf-transition-base);
+}
+
+.nf-input::placeholder {
+  color: var(--nf-color-text-placeholder);
+}
+
+/* --- Focus (Untitled UI ring + border) --- */
+
+.nf-input:focus {
+  outline: none;
+  border-color: var(--nf-color-primary);
+  box-shadow: var(--nf-ring-primary), var(--nf-shadow-xs);
+}
+
+/* --- Disabled --- */
+
+.nf-input:disabled,
+.nf-input[disabled] {
+  background: var(--nf-color-bg-muted);
+  color: var(--nf-color-text-placeholder);
+  cursor: not-allowed;
+}
+
+/* --- Read-Only --- */
+
+.nf-input:read-only {
+  background: var(--nf-color-bg-muted);
+  cursor: default;
+}
+
+.nf-input:read-only:focus {
+  border-color: var(--nf-color-border-strong);
+  box-shadow: var(--nf-ring-gray), var(--nf-shadow-xs);
+}
+
+/* --- Error --- */
+
+.nf-input-error {
+  border-color: var(--nf-color-danger);
+}
+
+.nf-input-error:focus {
+  border-color: var(--nf-color-danger);
+  box-shadow: var(--nf-ring-danger), var(--nf-shadow-xs);
+}
+
+/* --- Success --- */
+
+.nf-input-success {
+  border-color: var(--nf-color-success);
+}
+
+.nf-input-success:focus {
+  border-color: var(--nf-color-success);
+  box-shadow: 0 0 0 4px rgba(3, 152, 85, 0.24), var(--nf-shadow-xs);
+}
+
+/* ==========================================================================
+   Sizes
+   ========================================================================== */
+
+.nf-input-sm {
+  padding: 8px 12px;
+  font-size: var(--nf-font-size-sm);
+  line-height: 20px;
+}
+
+.nf-input-lg {
+  padding: 12px 16px;
+  font-size: var(--nf-font-size-base);
+  line-height: 24px;
+}
+
+/* ==========================================================================
+   Full Width
+   ========================================================================== */
+
+.nf-input-full {
+  width: 100%;
+}
+
+/* ==========================================================================
+   Input Group (prefix / suffix icons)
+   ========================================================================== */
+
+.nf-input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.nf-input-prefix,
+.nf-input-suffix {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  color: var(--nf-color-text-placeholder);
+}
+
+.nf-input-prefix {
+  left: 14px;
+}
+
+.nf-input-suffix {
+  right: 14px;
+}
+
+.nf-input-group .nf-input-prefix ~ .nf-input {
+  padding-left: var(--nf-spacing-10);
+}
+
+.nf-input-group .nf-input:has(+ .nf-input-suffix) {
+  padding-right: var(--nf-spacing-10);
+}
+
+.nf-input-group .nf-input-prefix ~ .nf-input.nf-input-sm {
+  padding-left: var(--nf-spacing-8);
+}
+
+.nf-input-group .nf-input.nf-input-sm:has(+ .nf-input-suffix) {
+  padding-right: var(--nf-spacing-8);
+}
+
+.nf-input-group .nf-input-prefix ~ .nf-input.nf-input-lg {
+  padding-left: var(--nf-spacing-12);
+}
+
+.nf-input-group .nf-input.nf-input-lg:has(+ .nf-input-suffix) {
+  padding-right: var(--nf-spacing-12);
+}
+
+/* ==========================================================================
+   Textarea
+   ========================================================================== */
+
+.nf-textarea {
+  display: block;
+  width: 100%;
+  padding: 12px 14px;
+  font-family: inherit;
+  font-size: var(--nf-font-size-base);
+  line-height: 24px;
+  color: var(--nf-color-text);
+  background: var(--nf-color-bg);
+  border: 1px solid var(--nf-color-border-strong);
+  border-radius: var(--nf-radius-md);
+  box-shadow: var(--nf-shadow-xs);
+  transition: border-color var(--nf-transition-base),
+    box-shadow var(--nf-transition-base);
+  min-height: 128px;
+  resize: vertical;
+}
+
+.nf-textarea::placeholder {
+  color: var(--nf-color-text-placeholder);
+}
+
+.nf-textarea:focus {
+  outline: none;
+  border-color: var(--nf-color-primary);
+  box-shadow: var(--nf-ring-primary), var(--nf-shadow-xs);
+}
+
+.nf-textarea:disabled,
+.nf-textarea[disabled] {
+  background: var(--nf-color-bg-muted);
+  color: var(--nf-color-text-placeholder);
+  cursor: not-allowed;
+}
+
+.nf-textarea:read-only {
+  background: var(--nf-color-bg-muted);
+  cursor: default;
+}
+
+.nf-textarea:read-only:focus {
+  border-color: var(--nf-color-border-strong);
+  box-shadow: var(--nf-ring-gray), var(--nf-shadow-xs);
+}
+
+.nf-textarea.nf-input-error {
+  border-color: var(--nf-color-danger);
+}
+
+.nf-textarea.nf-input-error:focus {
+  border-color: var(--nf-color-danger);
+  box-shadow: var(--nf-ring-danger), var(--nf-shadow-xs);
+}
+
+.nf-textarea.nf-input-success {
+  border-color: var(--nf-color-success);
+}
+
+.nf-textarea.nf-input-success:focus {
+  border-color: var(--nf-color-success);
+  box-shadow: 0 0 0 4px rgba(3, 152, 85, 0.24), var(--nf-shadow-xs);
+}
+
+.nf-textarea.nf-input-sm {
+  padding: 8px 12px;
+  font-size: var(--nf-font-size-sm);
+  min-height: 80px;
+}
+
+.nf-textarea.nf-input-lg {
+  padding: 14px 16px;
+  font-size: var(--nf-font-size-base);
+  min-height: 160px;
+}

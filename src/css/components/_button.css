@@ -1,0 +1,298 @@
+/* ==========================================================================
+   Button Component — Untitled UI Style
+   ========================================================================== */
+
+/* --- Base --- */
+
+.nf-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--nf-spacing-2);
+  padding: 10px 16px;
+  font-size: var(--nf-font-size-sm);
+  font-weight: var(--nf-font-weight-semibold);
+  line-height: 20px;
+  text-decoration: none;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  border-radius: var(--nf-radius-md);
+  cursor: pointer;
+  transition: background var(--nf-transition-base),
+    border-color var(--nf-transition-base),
+    color var(--nf-transition-base),
+    box-shadow var(--nf-transition-base);
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* --- Focus (Untitled UI ring style) --- */
+
+.nf-btn:focus-visible {
+  outline: none;
+  box-shadow: var(--nf-ring-primary), var(--nf-shadow-xs);
+}
+
+/* --- Disabled --- */
+
+.nf-btn:disabled,
+.nf-btn[disabled] {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Variants — Untitled UI naming
+   ========================================================================== */
+
+/* --- Primary --- */
+
+.nf-btn-primary {
+  background-color: var(--nf-color-primary);
+  color: var(--nf-color-text-inverse);
+  border-color: var(--nf-color-primary);
+  box-shadow: var(--nf-shadow-xs);
+}
+
+.nf-btn-primary:hover {
+  background-color: var(--nf-color-primary-hover);
+  border-color: var(--nf-color-primary-hover);
+}
+
+.nf-btn-primary:active {
+  background-color: var(--nf-color-primary-active);
+  border-color: var(--nf-color-primary-active);
+}
+
+.nf-btn-primary:focus-visible {
+  box-shadow: var(--nf-ring-primary), var(--nf-shadow-xs);
+}
+
+/* --- Secondary (white bg, gray border — Untitled UI secondary) --- */
+
+.nf-btn-secondary {
+  background-color: var(--nf-color-bg);
+  color: var(--nf-color-text-secondary);
+  border-color: var(--nf-color-border-strong);
+  box-shadow: var(--nf-shadow-xs);
+}
+
+.nf-btn-secondary:hover {
+  background-color: var(--nf-color-bg-muted);
+  color: var(--nf-color-text);
+}
+
+.nf-btn-secondary:active {
+  background-color: var(--nf-gray-100);
+}
+
+.nf-btn-secondary:focus-visible {
+  box-shadow: var(--nf-ring-gray), var(--nf-shadow-xs);
+}
+
+/* --- Outline (secondary color — brand outlined) --- */
+
+.nf-btn-outline {
+  background-color: var(--nf-color-bg);
+  color: var(--nf-color-primary);
+  border-color: var(--nf-color-primary-200);
+  box-shadow: var(--nf-shadow-xs);
+}
+
+.nf-btn-outline:hover {
+  background-color: var(--nf-color-primary-subtle);
+  color: var(--nf-color-primary-hover);
+  border-color: var(--nf-color-primary);
+}
+
+.nf-btn-outline:active {
+  background-color: var(--nf-color-primary-100);
+}
+
+.nf-btn-outline:focus-visible {
+  box-shadow: var(--nf-ring-primary), var(--nf-shadow-xs);
+}
+
+/* --- Ghost (tertiary — no border, no bg) --- */
+
+.nf-btn-ghost {
+  background-color: transparent;
+  color: var(--nf-color-text-muted);
+  border-color: transparent;
+}
+
+.nf-btn-ghost:hover {
+  background-color: var(--nf-color-bg-muted);
+  color: var(--nf-color-text-secondary);
+}
+
+.nf-btn-ghost:active {
+  background-color: var(--nf-gray-100);
+}
+
+.nf-btn-ghost:focus-visible {
+  box-shadow: var(--nf-ring-gray);
+}
+
+/* --- Link Color (text-only button styled as link) --- */
+
+.nf-btn-link {
+  background-color: transparent;
+  color: var(--nf-color-primary);
+  border-color: transparent;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.nf-btn-link:hover {
+  color: var(--nf-color-primary-hover);
+}
+
+.nf-btn-link:focus-visible {
+  box-shadow: none;
+  text-decoration: underline;
+}
+
+/* --- Danger (destructive primary) --- */
+
+.nf-btn-danger {
+  background-color: var(--nf-color-danger);
+  color: var(--nf-color-text-inverse);
+  border-color: var(--nf-color-danger);
+  box-shadow: var(--nf-shadow-xs);
+}
+
+.nf-btn-danger:hover {
+  background-color: var(--nf-color-danger-hover);
+  border-color: var(--nf-color-danger-hover);
+}
+
+.nf-btn-danger:active {
+  background-color: #912018;
+  border-color: #912018;
+}
+
+.nf-btn-danger:focus-visible {
+  box-shadow: var(--nf-ring-danger), var(--nf-shadow-xs);
+}
+
+/* --- Danger Secondary (outlined destructive) --- */
+
+.nf-btn-danger-secondary {
+  background-color: var(--nf-color-bg);
+  color: var(--nf-color-danger);
+  border-color: var(--nf-color-danger-100);
+  box-shadow: var(--nf-shadow-xs);
+}
+
+.nf-btn-danger-secondary:hover {
+  background-color: var(--nf-color-danger-subtle);
+  border-color: var(--nf-color-danger);
+}
+
+.nf-btn-danger-secondary:focus-visible {
+  box-shadow: var(--nf-ring-danger), var(--nf-shadow-xs);
+}
+
+/* ==========================================================================
+   Sizes — Untitled UI sizing (sm/md/lg/xl)
+   ========================================================================== */
+
+.nf-btn-sm {
+  padding: 8px 14px;
+  font-size: var(--nf-font-size-sm);
+  line-height: 20px;
+  gap: var(--nf-spacing-1);
+  border-radius: var(--nf-radius-md);
+}
+
+/* Default (.nf-btn) = md: 10px 16px — already set in base */
+
+.nf-btn-lg {
+  padding: 10px 18px;
+  font-size: var(--nf-font-size-base);
+  line-height: 24px;
+  gap: var(--nf-spacing-2);
+  border-radius: var(--nf-radius-md);
+}
+
+.nf-btn-xl {
+  padding: 12px 20px;
+  font-size: var(--nf-font-size-base);
+  line-height: 24px;
+  gap: 10px;
+  border-radius: var(--nf-radius-md);
+}
+
+/* ==========================================================================
+   Modifiers
+   ========================================================================== */
+
+/* --- Icon-only (square) --- */
+
+.nf-btn-icon {
+  padding: 10px;
+  gap: 0;
+}
+
+.nf-btn-icon.nf-btn-sm {
+  padding: 8px;
+}
+
+.nf-btn-icon.nf-btn-lg {
+  padding: 12px;
+}
+
+.nf-btn-icon.nf-btn-xl {
+  padding: 14px;
+}
+
+/* --- Full width --- */
+
+.nf-btn-full {
+  display: flex;
+  width: 100%;
+}
+
+/* --- Loading --- */
+
+.nf-btn-loading {
+  position: relative;
+  color: transparent;
+  pointer-events: none;
+}
+
+.nf-btn-loading::after {
+  content: "";
+  position: absolute;
+  width: 1em;
+  height: 1em;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: nf-spin 0.6s linear infinite;
+}
+
+.nf-btn-primary.nf-btn-loading::after,
+.nf-btn-danger.nf-btn-loading::after {
+  color: var(--nf-color-text-inverse);
+}
+
+.nf-btn-secondary.nf-btn-loading::after,
+.nf-btn-ghost.nf-btn-loading::after {
+  color: var(--nf-color-text-muted);
+}
+
+.nf-btn-outline.nf-btn-loading::after {
+  color: var(--nf-color-primary);
+}
+
+/* ==========================================================================
+   Keyframes
+   ========================================================================== */
+
+@keyframes nf-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

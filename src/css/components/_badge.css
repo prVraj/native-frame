@@ -1,0 +1,120 @@
+/* ==========================================================================
+   Badge — Untitled UI Style (Pill badges)
+   ========================================================================== */
+
+.nf-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 2px 10px;
+  font-size: var(--nf-font-size-xs);
+  font-weight: var(--nf-font-weight-medium);
+  line-height: 18px;
+  white-space: nowrap;
+  border-radius: var(--nf-radius-full);
+  border: 1px solid transparent;
+  transition: var(--nf-transition-base);
+}
+
+/* Variants — Untitled UI uses subtle bg + colored text + colored border */
+
+.nf-badge-primary {
+  color: var(--nf-color-primary);
+  background-color: var(--nf-color-primary-subtle);
+  border-color: var(--nf-color-primary-200);
+}
+
+.nf-badge-success {
+  color: var(--nf-color-success);
+  background-color: var(--nf-color-success-subtle);
+  border-color: var(--nf-color-success-100);
+}
+
+.nf-badge-warning {
+  color: var(--nf-color-warning);
+  background-color: var(--nf-color-warning-subtle);
+  border-color: var(--nf-color-warning-100);
+}
+
+.nf-badge-danger {
+  color: var(--nf-color-danger);
+  background-color: var(--nf-color-danger-subtle);
+  border-color: var(--nf-color-danger-100);
+}
+
+.nf-badge-neutral {
+  color: var(--nf-color-text-secondary);
+  background-color: var(--nf-color-bg-muted);
+  border-color: var(--nf-color-border);
+}
+
+/* Modifiers */
+
+.nf-badge-pill {
+  border-radius: var(--nf-radius-full);
+}
+
+.nf-badge-outline {
+  background-color: transparent;
+}
+
+.nf-badge-outline.nf-badge-primary {
+  border-color: var(--nf-color-primary);
+}
+
+.nf-badge-outline.nf-badge-success {
+  border-color: var(--nf-color-success);
+}
+
+.nf-badge-outline.nf-badge-danger {
+  border-color: var(--nf-color-danger);
+}
+
+.nf-badge-sm {
+  padding: 2px 8px;
+  font-size: 11px;
+  line-height: 16px;
+}
+
+.nf-badge-lg {
+  padding: 4px 12px;
+  font-size: var(--nf-font-size-sm);
+  line-height: 20px;
+}
+
+/* Dot indicator */
+.nf-badge-dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  font-size: 0;
+  line-height: 0;
+  border-radius: var(--nf-radius-full);
+  border: none;
+}
+
+/* Dot inside badge — leading indicator */
+.nf-badge-dot-indicator::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.nf-badge-primary.nf-badge-dot-indicator::before {
+  background-color: var(--nf-color-primary);
+}
+
+.nf-badge-success.nf-badge-dot-indicator::before {
+  background-color: var(--nf-color-success);
+}
+
+.nf-badge-warning.nf-badge-dot-indicator::before {
+  background-color: var(--nf-color-warning);
+}
+
+.nf-badge-danger.nf-badge-dot-indicator::before {
+  background-color: var(--nf-color-danger);
+}

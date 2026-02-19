@@ -1,0 +1,153 @@
+/* ==========================================================================
+   Modal — Untitled UI Style
+   ========================================================================== */
+
+.nf-modal {
+  position: fixed;
+  inset: 0;
+  z-index: var(--nf-z-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--nf-spacing-4);
+}
+
+.nf-modal[hidden] {
+  display: none;
+}
+
+/* Overlay — Untitled UI uses a blurred, semi-transparent overlay */
+.nf-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(52, 64, 84, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  transition: opacity var(--nf-transition-slow);
+}
+
+.nf-modal.is-open .nf-modal-overlay {
+  opacity: 1;
+}
+
+/* Content */
+.nf-modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  max-height: calc(100vh - var(--nf-spacing-8));
+  overflow-y: auto;
+  background: var(--nf-color-bg);
+  border-radius: var(--nf-radius-xl);
+  box-shadow: var(--nf-shadow-xl);
+  transform: translateY(8px);
+  opacity: 0;
+  transition: transform var(--nf-transition-slow), opacity var(--nf-transition-slow);
+}
+
+.nf-modal.is-open .nf-modal-content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Header */
+.nf-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: var(--nf-spacing-6);
+  padding-bottom: 0;
+}
+
+.nf-modal-title {
+  font-size: var(--nf-font-size-lg);
+  font-weight: var(--nf-font-weight-semibold);
+  color: var(--nf-color-text);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Close button */
+.nf-modal-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  font-size: 1.25rem;
+  color: var(--nf-color-text-muted);
+  background: none;
+  border: none;
+  border-radius: var(--nf-radius-md);
+  cursor: pointer;
+  transition: background var(--nf-transition-base), color var(--nf-transition-base);
+  flex-shrink: 0;
+  margin: -4px -4px 0 0;
+}
+
+.nf-modal-close:hover {
+  background: var(--nf-color-bg-muted);
+  color: var(--nf-color-text-secondary);
+}
+
+.nf-modal-close:focus-visible {
+  outline: none;
+  box-shadow: var(--nf-ring-gray);
+}
+
+/* Body */
+.nf-modal-body {
+  padding: var(--nf-spacing-5) var(--nf-spacing-6);
+  color: var(--nf-color-text-muted);
+  font-size: var(--nf-font-size-sm);
+  line-height: 1.5;
+}
+
+/* Footer */
+.nf-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--nf-spacing-3);
+  padding: var(--nf-spacing-6);
+  padding-top: var(--nf-spacing-4);
+}
+
+/* Sizes */
+.nf-modal-sm .nf-modal-content {
+  max-width: 400px;
+}
+
+.nf-modal-lg .nf-modal-content {
+  max-width: 640px;
+}
+
+.nf-modal-full .nf-modal-content {
+  max-width: calc(100vw - var(--nf-spacing-8));
+  max-height: calc(100vh - var(--nf-spacing-8));
+}
+
+/* Centered icon variant (Untitled UI pattern) */
+.nf-modal-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--nf-radius-lg);
+  border: 1px solid var(--nf-color-border);
+  box-shadow: var(--nf-shadow-xs);
+  margin-bottom: var(--nf-spacing-4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nf-modal-overlay,
+  .nf-modal-content {
+    transition: none;
+  }
+}
+
+.nf-modal-open {
+  overflow: hidden;
+}

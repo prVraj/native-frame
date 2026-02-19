@@ -1,0 +1,182 @@
+/* ==========================================================================
+   Design Tokens — Based on Untitled UI Design System
+   ========================================================================== */
+
+:root {
+  /* Gray Scale — Untitled UI Neutral Gray */
+  --nf-gray-25: #FCFCFD;
+  --nf-gray-50: #F9FAFB;
+  --nf-gray-100: #F2F4F7;
+  --nf-gray-200: #EAECF0;
+  --nf-gray-300: #D0D5DD;
+  --nf-gray-400: #98A2B3;
+  --nf-gray-500: #667085;
+  --nf-gray-600: #475467;
+  --nf-gray-700: #344054;
+  --nf-gray-800: #1D2939;
+  --nf-gray-900: #101828;
+
+  /* Colors — Background */
+  --nf-color-bg: #ffffff;
+  --nf-color-bg-subtle: var(--nf-gray-25);
+  --nf-color-bg-muted: var(--nf-gray-50);
+  --nf-color-text: var(--nf-gray-900);
+  --nf-color-text-secondary: var(--nf-gray-700);
+  --nf-color-text-muted: var(--nf-gray-500);
+  --nf-color-text-placeholder: var(--nf-gray-400);
+  --nf-color-text-inverse: #ffffff;
+  --nf-color-border: var(--nf-gray-200);
+  --nf-color-border-strong: var(--nf-gray-300);
+
+  /* Colors — Primary (Brand) */
+  --nf-color-primary: #0088FF;
+  --nf-color-primary-hover: #0070D6;
+  --nf-color-primary-active: #005DB3;
+  --nf-color-primary-subtle: #EFF8FF;
+  --nf-color-primary-100: #D1E9FF;
+  --nf-color-primary-200: #B2DDFF;
+  --nf-color-primary-ring: rgba(0, 136, 255, 0.24);
+
+  /* Colors — Error (Destructive) */
+  --nf-color-danger: #D92D20;
+  --nf-color-danger-hover: #B42318;
+  --nf-color-danger-subtle: #FEF3F2;
+  --nf-color-danger-100: #FEE4E2;
+  --nf-color-danger-ring: rgba(217, 45, 32, 0.24);
+
+  /* Colors — Warning */
+  --nf-color-warning: #DC6803;
+  --nf-color-warning-subtle: #FFFAEB;
+  --nf-color-warning-100: #FEF0C7;
+
+  /* Colors — Success */
+  --nf-color-success: #039855;
+  --nf-color-success-subtle: #ECFDF3;
+  --nf-color-success-100: #D1FADF;
+
+  /* Colors — Info */
+  --nf-color-info: #0086C9;
+  --nf-color-info-subtle: #F0F9FF;
+  --nf-color-info-100: #E0F2FE;
+
+  /* Typography — Inter (Untitled UI default) */
+  --nf-font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --nf-font-family-display: 'Inter', system-ui, -apple-system, sans-serif;
+  --nf-font-family-mono: ui-monospace, 'SF Mono', 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, monospace;
+
+  --nf-font-size-xs: 0.75rem;    /* 12px */
+  --nf-font-size-sm: 0.875rem;   /* 14px */
+  --nf-font-size-base: 1rem;     /* 16px */
+  --nf-font-size-lg: 1.125rem;   /* 18px */
+  --nf-font-size-xl: 1.25rem;    /* 20px */
+
+  --nf-font-weight-normal: 400;
+  --nf-font-weight-medium: 500;
+  --nf-font-weight-semibold: 600;
+  --nf-font-weight-bold: 700;
+
+  --nf-line-height-tight: 1.25;
+  --nf-line-height-base: 1.5;
+
+  /* Spacing (4px grid) */
+  --nf-spacing-1: 0.25rem;   /* 4px */
+  --nf-spacing-2: 0.5rem;    /* 8px */
+  --nf-spacing-3: 0.75rem;   /* 12px */
+  --nf-spacing-4: 1rem;      /* 16px */
+  --nf-spacing-5: 1.25rem;   /* 20px */
+  --nf-spacing-6: 1.5rem;    /* 24px */
+  --nf-spacing-8: 2rem;      /* 32px */
+  --nf-spacing-10: 2.5rem;   /* 40px */
+  --nf-spacing-12: 3rem;     /* 48px */
+  --nf-spacing-16: 4rem;     /* 64px */
+  --nf-spacing-20: 5rem;     /* 80px */
+
+  /* Border Radius — Untitled UI uses subtle rounding */
+  --nf-radius-sm: 6px;
+  --nf-radius-md: 8px;
+  --nf-radius-lg: 12px;
+  --nf-radius-xl: 16px;
+  --nf-radius-full: 9999px;
+
+  /* Shadows — Untitled UI shadow tokens (using gray-900 base) */
+  --nf-shadow-xs: 0px 1px 2px rgba(16, 24, 40, 0.05);
+  --nf-shadow-sm: 0px 1px 3px rgba(16, 24, 40, 0.1), 0px 1px 2px -1px rgba(16, 24, 40, 0.1);
+  --nf-shadow-md: 0px 4px 8px -2px rgba(16, 24, 40, 0.1), 0px 2px 4px -2px rgba(16, 24, 40, 0.06);
+  --nf-shadow-lg: 0px 12px 16px -4px rgba(16, 24, 40, 0.08), 0px 4px 6px -2px rgba(16, 24, 40, 0.03);
+  --nf-shadow-xl: 0px 20px 24px -4px rgba(16, 24, 40, 0.08), 0px 8px 8px -4px rgba(16, 24, 40, 0.03);
+  --nf-shadow-2xl: 0px 24px 48px -12px rgba(16, 24, 40, 0.18);
+
+  /* Focus ring */
+  --nf-ring-primary: 0 0 0 4px var(--nf-color-primary-ring);
+  --nf-ring-danger: 0 0 0 4px var(--nf-color-danger-ring);
+  --nf-ring-gray: 0 0 0 4px rgba(152, 162, 179, 0.14);
+
+  /* Transitions */
+  --nf-transition-fast: 100ms ease;
+  --nf-transition-base: 150ms ease;
+  --nf-transition-slow: 200ms ease-in-out;
+
+  /* Z-index */
+  --nf-z-dropdown: 1000;
+  --nf-z-sticky: 1100;
+  --nf-z-modal: 1200;
+  --nf-z-tooltip: 1300;
+  --nf-z-toast: 1400;
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --nf-color-bg: #0C111D;
+    --nf-color-bg-subtle: #161B26;
+    --nf-color-bg-muted: #1F242F;
+    --nf-color-text: #F5F5F6;
+    --nf-color-text-secondary: #CECFD2;
+    --nf-color-text-muted: #94969C;
+    --nf-color-text-placeholder: #85888E;
+    --nf-color-text-inverse: #0C111D;
+    --nf-color-border: #333741;
+    --nf-color-border-strong: #61646C;
+
+    --nf-color-primary-subtle: #0D2B4A;
+    --nf-color-primary-ring: rgba(0, 136, 255, 0.30);
+    --nf-color-success-subtle: #053321;
+    --nf-color-warning-subtle: #4E1D09;
+    --nf-color-danger-subtle: #55160C;
+    --nf-color-info-subtle: #062C41;
+
+    --nf-shadow-xs: 0px 1px 2px rgba(0, 0, 0, 0.3);
+    --nf-shadow-sm: 0px 1px 3px rgba(0, 0, 0, 0.4), 0px 1px 2px -1px rgba(0, 0, 0, 0.3);
+    --nf-shadow-md: 0px 4px 8px -2px rgba(0, 0, 0, 0.4), 0px 2px 4px -2px rgba(0, 0, 0, 0.3);
+    --nf-shadow-lg: 0px 12px 16px -4px rgba(0, 0, 0, 0.4), 0px 4px 6px -2px rgba(0, 0, 0, 0.2);
+    --nf-shadow-xl: 0px 20px 24px -4px rgba(0, 0, 0, 0.4), 0px 8px 8px -4px rgba(0, 0, 0, 0.2);
+    --nf-shadow-2xl: 0px 24px 48px -12px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.nf-dark {
+  --nf-color-bg: #0C111D;
+  --nf-color-bg-subtle: #161B26;
+  --nf-color-bg-muted: #1F242F;
+  --nf-color-text: #F5F5F6;
+  --nf-color-text-secondary: #CECFD2;
+  --nf-color-text-muted: #94969C;
+  --nf-color-text-placeholder: #85888E;
+  --nf-color-text-inverse: #0C111D;
+  --nf-color-border: #333741;
+  --nf-color-border-strong: #61646C;
+
+  --nf-color-primary-subtle: #0D2B4A;
+  --nf-color-primary-ring: rgba(0, 136, 255, 0.30);
+  --nf-color-success-subtle: #053321;
+  --nf-color-warning-subtle: #4E1D09;
+  --nf-color-danger-subtle: #55160C;
+  --nf-color-info-subtle: #062C41;
+
+  --nf-shadow-xs: 0px 1px 2px rgba(0, 0, 0, 0.3);
+  --nf-shadow-sm: 0px 1px 3px rgba(0, 0, 0, 0.4), 0px 1px 2px -1px rgba(0, 0, 0, 0.3);
+  --nf-shadow-md: 0px 4px 8px -2px rgba(0, 0, 0, 0.4), 0px 2px 4px -2px rgba(0, 0, 0, 0.3);
+  --nf-shadow-lg: 0px 12px 16px -4px rgba(0, 0, 0, 0.4), 0px 4px 6px -2px rgba(0, 0, 0, 0.2);
+  --nf-shadow-xl: 0px 20px 24px -4px rgba(0, 0, 0, 0.4), 0px 8px 8px -4px rgba(0, 0, 0, 0.2);
+  --nf-shadow-2xl: 0px 24px 48px -12px rgba(0, 0, 0, 0.5);
+}

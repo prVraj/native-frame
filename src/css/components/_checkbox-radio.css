@@ -1,0 +1,151 @@
+/* ==========================================================================
+   Checkbox & Radio — Untitled UI Style
+   ========================================================================== */
+
+.nf-checkbox,
+.nf-radio {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  min-height: 20px;
+  border: 1px solid var(--nf-color-border-strong);
+  background-color: var(--nf-color-bg);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  cursor: pointer;
+  transition: background var(--nf-transition-base),
+    border-color var(--nf-transition-base),
+    box-shadow var(--nf-transition-base);
+  position: relative;
+  margin: 0;
+}
+
+/* --- Checkbox --- */
+
+.nf-checkbox {
+  border-radius: var(--nf-radius-sm);
+}
+
+.nf-checkbox:checked {
+  background-color: var(--nf-color-primary);
+  border-color: var(--nf-color-primary);
+}
+
+.nf-checkbox:checked::after {
+  content: "";
+  display: block;
+  width: 5.5px;
+  height: 10px;
+  border: solid var(--nf-color-text-inverse);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  position: absolute;
+  top: 2px;
+  left: 6px;
+}
+
+.nf-checkbox:indeterminate {
+  background-color: var(--nf-color-primary);
+  border-color: var(--nf-color-primary);
+}
+
+.nf-checkbox:indeterminate::after {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 2px;
+  background-color: var(--nf-color-text-inverse);
+  border-radius: 1px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* --- Radio --- */
+
+.nf-radio {
+  border-radius: 50%;
+}
+
+.nf-radio:checked {
+  background-color: var(--nf-color-primary-subtle);
+  border-color: var(--nf-color-primary);
+  border-width: 2px;
+}
+
+.nf-radio:checked::after {
+  content: "";
+  display: block;
+  width: 8px;
+  height: 8px;
+  background-color: var(--nf-color-primary);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* --- Focus --- */
+
+.nf-checkbox:focus-visible,
+.nf-radio:focus-visible {
+  outline: none;
+  box-shadow: var(--nf-ring-primary);
+}
+
+/* --- Hover --- */
+
+.nf-checkbox:hover:not(:checked):not(:disabled),
+.nf-radio:hover:not(:checked):not(:disabled) {
+  border-color: var(--nf-color-primary);
+  background-color: var(--nf-color-primary-subtle);
+}
+
+/* --- Disabled --- */
+
+.nf-checkbox:disabled,
+.nf-radio:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  background-color: var(--nf-color-bg-muted);
+}
+
+/* --- Groups --- */
+
+.nf-checkbox-group,
+.nf-radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--nf-spacing-3);
+}
+
+.nf-checkbox-group-horizontal,
+.nf-radio-group-horizontal {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+/* --- Labels --- */
+
+.nf-checkbox-label,
+.nf-radio-label {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--nf-spacing-2);
+  cursor: pointer;
+  font-size: var(--nf-font-size-sm);
+  line-height: 20px;
+  color: var(--nf-color-text-secondary);
+}
+
+.nf-checkbox-label:has(.nf-checkbox:disabled),
+.nf-radio-label:has(.nf-radio:disabled) {
+  cursor: not-allowed;
+  opacity: 0.4;
+}

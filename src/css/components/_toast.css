@@ -1,0 +1,202 @@
+/* ==========================================================================
+   Toast — 4-row list + Sonner-style overflow stack
+   Full-card progress fill, accent-colored text
+   ========================================================================== */
+
+/* ---- Region (anchor point) ---- */
+.nf-toast-region {
+  position: fixed;
+  z-index: var(--nf-z-toast);
+  pointer-events: none;
+  width: min(420px, calc(100vw - 40px));
+}
+
+.nf-toast-region[data-position="bottom-right"] {
+  bottom: var(--nf-spacing-6);
+  right: var(--nf-spacing-6);
+}
+
+.nf-toast-region[data-position="bottom-left"] {
+  bottom: var(--nf-spacing-6);
+  left: var(--nf-spacing-6);
+}
+
+.nf-toast-region[data-position="top-right"] {
+  top: var(--nf-spacing-6);
+  right: var(--nf-spacing-6);
+}
+
+.nf-toast-region[data-position="top-left"] {
+  top: var(--nf-spacing-6);
+  left: var(--nf-spacing-6);
+}
+
+/* ---- Individual toast ---- */
+.nf-toast {
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--nf-spacing-3);
+  padding: 14px 16px;
+  background: var(--nf-color-bg);
+  border: 1px solid var(--nf-color-border);
+  border-radius: var(--nf-radius-lg);
+  box-shadow: var(--nf-shadow-lg);
+  pointer-events: auto;
+  overflow: hidden;
+
+  transform-origin: bottom center;
+
+  --_y: 0px;
+  --_scale: 1;
+  --_opacity: 0;
+
+  opacity: var(--_opacity);
+  transform: translateY(var(--_y)) scale(var(--_scale));
+
+  transition:
+    transform 380ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 380ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity;
+
+  --nf-toast-accent: var(--nf-color-info);
+  --nf-toast-fill: var(--nf-color-info-subtle);
+}
+
+/* Bottom-positioned: anchor at bottom */
+.nf-toast-region[data-position^="bottom"] .nf-toast {
+  bottom: 0;
+}
+
+/* Top-positioned: anchor at top, flip origin */
+.nf-toast-region[data-position^="top"] .nf-toast {
+  top: 0;
+  transform-origin: top center;
+}
+
+/* Overflow toasts */
+.nf-toast[data-stacked="overflow"] {
+  pointer-events: none;
+}
+
+.nf-toast[data-stacked="hidden"] {
+  pointer-events: none;
+}
+
+/* Dismissing */
+.nf-toast.is-dismissing {
+  --_opacity: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition-duration: 200ms;
+}
+
+/* ---- Variants: accent text + fill color (no left border) ---- */
+.nf-toast-success {
+  --nf-toast-accent: var(--nf-color-success);
+  --nf-toast-fill: var(--nf-color-success-subtle);
+}
+
+.nf-toast-error {
+  --nf-toast-accent: var(--nf-color-danger);
+  --nf-toast-fill: var(--nf-color-danger-subtle);
+}
+
+.nf-toast-warning {
+  --nf-toast-accent: var(--nf-color-warning);
+  --nf-toast-fill: var(--nf-color-warning-subtle);
+}
+
+.nf-toast-info {
+  --nf-toast-accent: var(--nf-color-info);
+  --nf-toast-fill: var(--nf-color-info-subtle);
+}
+
+/* ---- Full-card progress fill ----
+   Covers the entire card height. Shrinks from right → left
+   so the colored area "drains" as time passes. */
+.nf-toast-progress {
+  position: absolute;
+  inset: 0;
+  background: var(--nf-toast-fill);
+  transform-origin: left center;
+  animation: nf-toast-progress linear forwards;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes nf-toast-progress {
+  from { transform: scaleX(1); }
+  to   { transform: scaleX(0); }
+}
+
+/* ---- Toast content (above the progress fill) ---- */
+.nf-toast-message {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  font-size: var(--nf-font-size-sm);
+  font-weight: var(--nf-font-weight-semibold);
+  color: var(--nf-toast-accent);
+  line-height: 20px;
+}
+
+.nf-toast-title {
+  font-weight: var(--nf-font-weight-semibold);
+  color: var(--nf-toast-accent);
+  margin-bottom: 2px;
+}
+
+.nf-toast-icon {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: var(--nf-toast-accent);
+}
+
+/* ---- Close button ---- */
+.nf-toast-close {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--nf-toast-accent);
+  background: none;
+  border: none;
+  border-radius: var(--nf-radius-md);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background var(--nf-transition-base), color var(--nf-transition-base);
+  margin: -4px -4px -4px 0;
+}
+
+.nf-toast-close:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.nf-toast-close:focus-visible {
+  outline: none;
+  box-shadow: var(--nf-ring-gray);
+}
+
+/* ---- Reduced motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  .nf-toast {
+    transition: none;
+  }
+  .nf-toast-progress {
+    animation: none;
+  }
+}

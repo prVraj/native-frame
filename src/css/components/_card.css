@@ -1,0 +1,72 @@
+/* ==========================================================================
+   Card — Untitled UI Style
+   ========================================================================== */
+
+.nf-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--nf-color-bg);
+  border: 1px solid var(--nf-color-border);
+  border-radius: var(--nf-radius-lg);
+  box-shadow: var(--nf-shadow-sm);
+  overflow: hidden;
+  transition: box-shadow var(--nf-transition-base),
+    border-color var(--nf-transition-base);
+}
+
+/* Sub-elements */
+
+.nf-card-header {
+  padding: var(--nf-spacing-5) var(--nf-spacing-6);
+  border-bottom: 1px solid var(--nf-color-border);
+}
+
+.nf-card-body {
+  padding: var(--nf-spacing-5) var(--nf-spacing-6);
+}
+
+.nf-card-footer {
+  padding: var(--nf-spacing-4) var(--nf-spacing-6);
+  border-top: 1px solid var(--nf-color-border);
+  background-color: var(--nf-color-bg-subtle);
+}
+
+.nf-card-image {
+  width: 100%;
+  display: block;
+}
+
+.nf-card-image:first-child {
+  border-top-left-radius: var(--nf-radius-lg);
+  border-top-right-radius: var(--nf-radius-lg);
+}
+
+/* Variants */
+
+.nf-card-bordered {
+  box-shadow: none;
+  border: 1px solid var(--nf-color-border);
+}
+
+.nf-card-flat {
+  box-shadow: none;
+  border: none;
+  background-color: var(--nf-color-bg-muted);
+}
+
+/* Modifiers */
+
+.nf-card-hoverable {
+  cursor: pointer;
+}
+
+.nf-card-hoverable:hover {
+  box-shadow: var(--nf-shadow-md);
+  border-color: var(--nf-color-border-strong);
+}
+
+.nf-card-compact .nf-card-header,
+.nf-card-compact .nf-card-body,
+.nf-card-compact .nf-card-footer {
+  padding: var(--nf-spacing-3) var(--nf-spacing-4);
+}
