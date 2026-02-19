@@ -4,7 +4,22 @@ Get up and running with NativeFrame in under 60 seconds.
 
 ---
 
-## Step 1: Create an HTML file
+## Step 1: Get the files
+
+Clone and build the library:
+
+```bash
+git clone https://github.com/prVraj/native-frame.git
+cd native-frame
+npm install
+npm run build
+```
+
+Or if you already have the `dist/` files, skip to the next step.
+
+---
+
+## Step 2: Create an HTML file
 
 Create a new file called `index.html`:
 
@@ -15,42 +30,39 @@ Create a new file called `index.html`:
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My NativeFrame App</title>
-  
-  <!-- NativeFrame CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nativeframe@0.1/dist/nativeframe.min.css">
+  <link rel="stylesheet" href="dist/nativeframe.min.css">
 </head>
 <body>
-  
+
   <div class="nf-container" style="padding: 2rem;">
     <!-- Your content goes here -->
   </div>
-  
-  <!-- NativeFrame JS (optional, for interactive components) -->
-  <script src="https://cdn.jsdelivr.net/npm/nativeframe@0.1/dist/nativeframe.min.js" defer></script>
+
+  <script src="dist/nativeframe.min.js" defer></script>
 </body>
 </html>
 ```
 
-That's it! You now have NativeFrame installed.
+That's it. NativeFrame is ready to use.
 
 ---
 
-## Step 2: Add some components
+## Step 3: Add some components
 
-Let's add a card with a button:
+Add a card with a button:
 
 ```html
 <div class="nf-container" style="padding: 2rem;">
-  
+
   <h1>Welcome to NativeFrame</h1>
-  <p>Building beautiful interfaces has never been easier.</p>
-  
+  <p>Building clean interfaces without framework overhead.</p>
+
   <div class="nf-card" style="max-width: 400px; margin-top: 2rem;">
     <div class="nf-card-header">
       <strong>Getting Started</strong>
     </div>
     <div class="nf-card-body">
-      <p>This is a card component. Cards are perfect for grouping related content.</p>
+      <p>This is a card component. Cards group related content together.</p>
     </div>
     <div class="nf-card-footer">
       <button class="nf-btn nf-btn-primary" id="demo-btn">
@@ -58,19 +70,19 @@ Let's add a card with a button:
       </button>
     </div>
   </div>
-  
+
 </div>
 ```
 
 ---
 
-## Step 3: Add interactivity (optional)
+## Step 4: Add interactivity (optional)
 
-Let's make the button show a toast notification:
+Make the button show a toast notification:
 
 ```html
 <script>
-  document.getElementById('demo-btn').addEventListener('click', function() {
+  document.getElementById('demo-btn').addEventListener('click', function () {
     NF.toast.show('You clicked the button!', { type: 'success' });
   });
 </script>
@@ -80,7 +92,7 @@ Let's make the button show a toast notification:
 
 ## Complete example
 
-Here's the full working page:
+Here is the full working page:
 
 ```html
 <!DOCTYPE html>
@@ -89,20 +101,20 @@ Here's the full working page:
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My NativeFrame App</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nativeframe@0.1/dist/nativeframe.min.css">
+  <link rel="stylesheet" href="dist/nativeframe.min.css">
 </head>
 <body>
-  
+
   <div class="nf-container" style="padding: 2rem;">
     <h1>Welcome to NativeFrame</h1>
-    <p>Building beautiful interfaces has never been easier.</p>
-    
+    <p>Building clean interfaces without framework overhead.</p>
+
     <div class="nf-card" style="max-width: 400px; margin-top: 2rem;">
       <div class="nf-card-header">
         <strong>Getting Started</strong>
       </div>
       <div class="nf-card-body">
-        <p>This is a card component. Cards are perfect for grouping related content.</p>
+        <p>This is a card component. Cards group related content together.</p>
       </div>
       <div class="nf-card-footer">
         <button class="nf-btn nf-btn-primary" id="demo-btn">
@@ -111,27 +123,25 @@ Here's the full working page:
       </div>
     </div>
   </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/nativeframe@0.1/dist/nativeframe.min.js" defer></script>
+
+  <script src="dist/nativeframe.min.js" defer></script>
   <script>
-    document.getElementById('demo-btn').addEventListener('click', function() {
+    document.getElementById('demo-btn').addEventListener('click', function () {
       NF.toast.show('You clicked the button!', { type: 'success' });
     });
   </script>
-  
+
 </body>
 </html>
 ```
 
-Open this in your browser and click the button. You should see a success toast appear!
+Open this in your browser and click the button. A success toast should appear.
 
 ---
 
-## Next steps
+## Explore components
 
-### Explore components
-
-Browse the full component library to see what's available:
+Browse the full component library:
 
 - [Button](./components/button.md) — Buttons with variants and sizes
 - [Card](./components/card.md) — Content containers
@@ -140,19 +150,18 @@ Browse the full component library to see what's available:
 - [Input](./components/input.md) — Form inputs
 - [Tabs](./components/tabs.md) — Tabbed interfaces
 - [Accordion](./components/accordion.md) — Collapsible content
-- [All Components →](./components/button.md)
 
-### Customize the theme
+## Customize the theme
 
-Learn how to customize colors, spacing, and more:
+Change colors, spacing, and more:
 
-- [Theming Guide](./theming.md) — Customize design tokens
+- [Theming Guide](./theming.md) — Full token reference
 
-### Learn the JavaScript API
+## JavaScript API
 
-If you're using interactive components, explore the full API:
+If you use interactive components, see the full API reference:
 
-- [JavaScript API](./javascript-api.md) — Complete API reference
+- [JavaScript API](./javascript-api.md)
 
 ---
 
@@ -166,13 +175,13 @@ If you're using interactive components, explore the full API:
     <label class="nf-label" for="email">Email</label>
     <input type="email" class="nf-input" id="email" placeholder="you@example.com">
   </div>
-  
+
   <div style="margin-bottom: 1rem;">
     <label class="nf-label" for="password">Password</label>
     <input type="password" class="nf-input" id="password">
     <span class="nf-help-text">Must be at least 8 characters</span>
   </div>
-  
+
   <button type="submit" class="nf-btn nf-btn-primary nf-btn-full">
     Sign in
   </button>
@@ -183,21 +192,19 @@ If you're using interactive components, explore the full API:
 
 ```html
 <div class="nf-grid nf-md-grid-cols-3">
-  <div class="nf-card">Card 1</div>
-  <div class="nf-card">Card 2</div>
-  <div class="nf-card">Card 3</div>
+  <div class="nf-card"><div class="nf-card-body">Card 1</div></div>
+  <div class="nf-card"><div class="nf-card-body">Card 2</div></div>
+  <div class="nf-card"><div class="nf-card-body">Card 3</div></div>
 </div>
 ```
 
 ### Modal dialog
 
 ```html
-<!-- Trigger button -->
 <button class="nf-btn nf-btn-primary" data-modal-open="my-modal">
   Open Modal
 </button>
 
-<!-- Modal -->
 <div class="nf-modal" id="my-modal" hidden>
   <div class="nf-modal-overlay"></div>
   <div class="nf-modal-content">
@@ -216,26 +223,22 @@ If you're using interactive components, explore the full API:
 </div>
 ```
 
-The modal automatically handles:
-- Focus trapping
-- Escape key to close
-- Click overlay to close
-- Return focus to trigger on close
+The modal handles focus trapping, Escape key, overlay click, and return focus automatically.
 
 ---
 
 ## Tips
 
-1. **Use semantic HTML** — NativeFrame enhances native elements, so start with proper HTML structure
-2. **Mobile-first** — All components are responsive by default
-3. **Dark mode** — Works automatically with `prefers-color-scheme: dark`
-4. **Accessibility** — All interactive components include ARIA attributes and keyboard support
-5. **Progressive enhancement** — Most components work without JavaScript
+1. **Use semantic HTML** — NativeFrame enhances native elements. Start with proper HTML structure.
+2. **Mobile-first** — All components are responsive by default.
+3. **Dark mode** — Works automatically with `prefers-color-scheme: dark`.
+4. **Accessibility** — All interactive components include ARIA attributes and keyboard support.
+5. **Progressive enhancement** — Most components work without JavaScript.
 
 ---
 
 ## Need help?
 
-- View the [examples](../examples/quick-start.html) for complete working demos
-- Read the [component docs](./components/button.md) for detailed usage
-- Check the [theming guide](./theming.md) for customization options
+- Run `npm run serve` and browse the [example pages](../examples/quick-start.html)
+- Read the [component docs](./components/button.md)
+- Check the [theming guide](./theming.md)

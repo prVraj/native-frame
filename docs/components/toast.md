@@ -54,7 +54,7 @@ NF.toast.show('Here is some information', { type: 'info' });
 
 ### Duration
 
-Auto-dismiss time in milliseconds (default: `4000`).
+Auto-dismiss time in milliseconds (default: `6000`).
 
 ```javascript
 // Dismiss after 6 seconds

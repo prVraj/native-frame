@@ -57,7 +57,7 @@ NF.tabs.select(tab);
 
 | Variable | Default | Usage |
 |----------|---------|-------|
-| `--nf-color-primary` | `#6366f1` | Active tab indicator |
+| `--nf-color-primary` | `#0088FF` | Active tab indicator |
 | `--nf-color-border` | `#e2e8f0` | Tab border |
 | `--nf-spacing-4` | `1rem` | Tab padding |
 

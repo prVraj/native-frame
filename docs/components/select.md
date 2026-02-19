@@ -136,7 +136,7 @@ No modifier needed.
 |----------|---------|-------|
 | `--nf-color-border` | `#e2e8f0` | Select border |
 | `--nf-color-bg` | `#ffffff` | Select background |
-| `--nf-color-primary` | `#6366f1` | Focus ring |
+| `--nf-color-primary` | `#0088FF` | Focus ring |
 | `--nf-spacing-3` | `0.75rem` | Select padding |
 
 ---

@@ -2,82 +2,75 @@
 
 ## What is NativeFrame?
 
-**NativeFrame** is a lightweight, framework-agnostic UI component library built with pure HTML, CSS, and vanilla JavaScript. It provides production-ready UI primitives that work anywhere — no build step, no framework lock-in, no JavaScript overhead.
+**NativeFrame** is a lightweight UI component library built with pure HTML, CSS, and vanilla JavaScript. It gives you production-ready components that work anywhere — no build step needed, no framework required, no JavaScript overhead for most components.
 
 ## What NativeFrame is
 
-- **A CSS-first component library** — Most components work with CSS alone, no JavaScript required
-- **Framework-agnostic** — Use it with React, Vue, Svelte, or plain HTML
-- **Accessible by default** — Every interactive component ships with proper ARIA patterns and keyboard support
-- **Dependency-free** — Zero npm runtime dependencies
-- **Tiny footprint** — Under 10 KB gzipped for the complete library
+- **A CSS-first component library** — Most components work with CSS alone. JavaScript is only needed for interactive behavior like modals and toasts.
+- **Framework-agnostic** — Use it with React, Vue, Svelte, or plain HTML.
+- **Accessible by default** — Every interactive component ships with ARIA patterns and keyboard support.
+- **Dependency-free** — Zero runtime dependencies.
+- **Small** — Under 10 KB total (minified + gzipped).
 
-## What NativeFrame is NOT
+## What NativeFrame is not
 
-- **Not a CSS framework** — We don't provide utility classes for every possible style
-- **Not a JavaScript framework** — No state management, no reactivity system, no virtual DOM
-- **Not an application framework** — No routing, no data fetching, no complex app patterns
+- **Not a CSS framework** — There are no utility classes for every possible style.
+- **Not a JavaScript framework** — There is no state management, reactivity, or virtual DOM.
+- **Not an application framework** — There is no routing, data fetching, or app scaffolding.
 
 ## Who it's for
 
-NativeFrame is perfect for:
+NativeFrame works well for:
 
-- Developers who want clean, semantic HTML without framework overhead
-- Teams building prototypes or MVPs that need to move fast
-- Projects that need a consistent design system without heavy dependencies
-- Anyone tired of bundler complexity and just wants components that work
+- Developers who want clean, semantic HTML without framework overhead.
+- Teams building prototypes or MVPs that need to move fast.
+- Projects that need a consistent design system without heavy dependencies.
+- Anyone who wants components that just work when dropped into a page.
 
 ## Philosophy
 
 ### CSS-first, JS-optional
 
-Every component is designed to work as much as possible without JavaScript. Interactive components like modals and accordions gracefully enhance with JS, but the foundation is pure CSS.
+Every component is designed to work as much as possible without JavaScript. Interactive components like modals and accordions enhance progressively with JS, but the visual foundation is pure CSS.
 
 ### Accessibility is not optional
 
 All interactive components include:
-- Proper ARIA attributes
-- Full keyboard navigation support
+
+- ARIA attributes
+- Full keyboard navigation
 - Focus management
 - Screen reader compatibility
 - Support for `prefers-reduced-motion` and `prefers-color-scheme`
 
 ### Progressive enhancement
 
-Components work with just HTML and CSS. JavaScript adds behavior and interactivity, but the core experience remains functional without it.
+Components work with just HTML and CSS. JavaScript adds behavior and interactivity, but the core experience stays functional without it.
 
 ### Zero dependencies
 
-The entire library is self-contained. No external runtime dependencies means:
-- Smaller bundle sizes
-- No supply chain vulnerabilities
-- No version conflicts
-- Complete control over updates
+The entire library is self-contained. No external runtime dependencies means smaller bundles, no supply chain risk, no version conflicts, and full control over updates.
 
 ## Bundle sizes
 
-| File | Uncompressed | Gzipped |
-|------|--------------|---------|
-| `nativeframe.css` | ~45 KB | ~7 KB |
-| `nativeframe.min.css` | ~30 KB | ~5 KB |
-| `nativeframe.js` | ~15 KB | ~4 KB |
-| `nativeframe.min.js` | ~8 KB | ~2.5 KB |
-
-**Total library size (minified + gzipped): Under 8 KB**
+| File | Minified | Gzipped |
+|------|----------|---------|
+| `nativeframe.min.css` | ~39 KB | ~7 KB |
+| `nativeframe.min.js` | ~9 KB | ~3 KB |
+| **Total** | **~48 KB** | **~10 KB** |
 
 ## Browser support
 
 NativeFrame supports all modern browsers:
 
-- Chrome/Edge 90+
+- Chrome / Edge 90+
 - Firefox 88+
 - Safari 14+
-- Opera 76+
 
-We use modern CSS features like custom properties, Grid, and Flexbox. No IE11 support.
+It uses modern CSS features like custom properties, Grid, and Flexbox. There is no IE11 support.
 
 ## Next steps
 
-- [Installation](./installation.md) — Get started in under 60 seconds
-- [Quick Start](./quick-start.md) — Your first NativeFrame page
+- [Installation](./installation.md) — Get NativeFrame into your project
+- [Quick Start](./quick-start.md) — Build your first page
 - [Components](./components/button.md) — Browse all available components

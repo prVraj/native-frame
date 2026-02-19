@@ -85,7 +85,7 @@ No modifier needed.
 
 | Variable | Default | Usage |
 |----------|---------|-------|
-| `--nf-color-primary` | `#6366f1` | Toggle active background |
+| `--nf-color-primary` | `#0088FF` | Toggle active background |
 | `--nf-color-border` | `#e2e8f0` | Toggle inactive border |
 | `--nf-transition-base` | `150ms ease` | Toggle animation |
 

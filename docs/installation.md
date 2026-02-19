@@ -1,143 +1,74 @@
 # Installation
 
-NativeFrame can be installed in three ways: via CDN, direct download, or npm. Choose the method that works best for your project.
+You can add NativeFrame to your project in two ways: build from source or copy the dist files directly.
 
 ---
 
-## Option 1: CDN (Recommended for prototypes)
+## Option 1: Build from source (recommended)
 
-The fastest way to get started. Just add these two lines to your HTML `<head>`:
-
-```html
-<!-- CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nativeframe@0.1/dist/nativeframe.min.css">
-
-<!-- JavaScript (optional, for interactive components) -->
-<script src="https://cdn.jsdelivr.net/npm/nativeframe@0.1/dist/nativeframe.min.js" defer></script>
-```
-
-**Pros:**
-- Zero setup, works immediately
-- Cached across sites for faster load times
-- Great for prototypes and demos
-
-**Cons:**
-- Requires an internet connection
-- Less control over versioning
-
----
-
-## Option 2: Download ZIP
-
-Download the latest release from [GitHub](https://github.com/yourusername/nativeframe/releases) and include the files in your project.
-
-After extracting, you'll have this structure:
-
-```
-nativeframe/
-├── dist/
-│   ├── nativeframe.css
-│   ├── nativeframe.min.css
-│   ├── nativeframe.js
-│   └── nativeframe.min.js
-├── README.md
-└── LICENSE
-```
-
-Link to the files in your HTML:
-
-```html
-<!-- CSS -->
-<link rel="stylesheet" href="path/to/nativeframe/dist/nativeframe.min.css">
-
-<!-- JavaScript (optional) -->
-<script src="path/to/nativeframe/dist/nativeframe.min.js" defer></script>
-```
-
-**Pros:**
-- Complete control over file location
-- Works offline
-- No external dependencies
-
-**Cons:**
-- Manual updates required
-- Must manage files yourself
-
----
-
-## Option 3: npm (Recommended for production)
-
-Install via npm and import into your build pipeline:
+Clone the repository and run the build:
 
 ```bash
-npm install nativeframe
+git clone https://github.com/prVraj/native-frame.git
+cd native-frame
+npm install
+npm run build
 ```
 
-### Import in your CSS:
+This generates four files in the `dist/` folder:
 
-```css
-@import 'nativeframe/dist/nativeframe.css';
+```
+dist/
+├── nativeframe.css         # Full CSS (unminified)
+├── nativeframe.min.css     # Minified CSS
+├── nativeframe.js          # Full JS (unminified)
+└── nativeframe.min.js      # Minified JS
 ```
 
-Or link directly in HTML:
+Link them in your HTML:
 
 ```html
-<link rel="stylesheet" href="node_modules/nativeframe/dist/nativeframe.min.css">
+<link rel="stylesheet" href="dist/nativeframe.min.css">
+<script src="dist/nativeframe.min.js" defer></script>
 ```
-
-### Import in your JavaScript:
-
-```javascript
-import NF from 'nativeframe';
-
-// Use the API
-NF.toast.show('Hello from NativeFrame!', { type: 'success' });
-```
-
-Or include as a script tag:
-
-```html
-<script src="node_modules/nativeframe/dist/nativeframe.min.js"></script>
-<script>
-  // NF is available globally
-  NF.toast.show('Hello!', { type: 'success' });
-</script>
-```
-
-**Pros:**
-- Integrates with your build process
-- Version control via `package.json`
-- Easy updates with `npm update`
-
-**Cons:**
-- Requires npm and a build step (optional)
-- Slightly more setup than CDN
 
 ---
 
-## What's included?
+## Option 2: Copy the dist files
 
-Regardless of installation method, you get:
+If you don't want to clone the full repo, download or copy just the `dist/` files into your project after building:
+
+```html
+<link rel="stylesheet" href="path/to/nativeframe.min.css">
+<script src="path/to/nativeframe.min.js" defer></script>
+```
+
+---
+
+## What's included
 
 ### CSS (`nativeframe.css` or `.min.css`)
-- Design tokens (CSS custom properties)
+
+- Design tokens (CSS custom properties for colors, spacing, typography, etc.)
 - Minimal reset
 - Base element styles
-- All 15+ components
+- All 15 components
 - Layout utilities
 
 ### JavaScript (`nativeframe.js` or `.min.js`)
+
 - Global `NF` object
 - Interactive component APIs:
-  - `NF.modal`
-  - `NF.toast`
-  - `NF.accordion`
-  - `NF.tabs`
-  - `NF.tooltip`
+  - `NF.modal` — open, close
+  - `NF.toast` — show, dismiss, dismissAll
+  - `NF.accordion` — open, close, toggle
+  - `NF.tabs` — select
+  - `NF.tooltip` — show, hide
+- Auto-initialization on `DOMContentLoaded`
 
 ---
 
-## Verify installation
+## Verify it works
 
 Create a simple HTML file to test:
 
@@ -148,17 +79,17 @@ Create a simple HTML file to test:
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NativeFrame Test</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nativeframe@0.1/dist/nativeframe.min.css">
+  <link rel="stylesheet" href="dist/nativeframe.min.css">
 </head>
 <body>
   <div class="nf-container" style="padding: 2rem;">
     <h1>Hello, NativeFrame!</h1>
-    <button class="nf-btn nf-btn-primary">Click me</button>
+    <button class="nf-btn nf-btn-primary" id="test-btn">Click me</button>
   </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/nativeframe@0.1/dist/nativeframe.min.js"></script>
+
+  <script src="dist/nativeframe.min.js"></script>
   <script>
-    document.querySelector('.nf-btn').addEventListener('click', () => {
+    document.getElementById('test-btn').addEventListener('click', function () {
       NF.toast.show('It works!', { type: 'success' });
     });
   </script>
@@ -166,7 +97,19 @@ Create a simple HTML file to test:
 </html>
 ```
 
-Open this file in your browser. If you see a styled button and clicking it shows a toast, you're all set!
+Open this file in your browser. If you see a styled button and clicking it shows a toast notification, you're all set.
+
+---
+
+## Local dev server
+
+NativeFrame includes a built-in dev server for previewing examples and docs:
+
+```bash
+npm run serve
+```
+
+This starts a server at `http://127.0.0.1:4173` with all examples and documentation available.
 
 ---
 

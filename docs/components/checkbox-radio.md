@@ -103,7 +103,7 @@ Checkboxes allow multiple selections. Radio buttons allow a single selection fro
 
 | Variable | Default | Usage |
 |----------|---------|-------|
-| `--nf-color-primary` | `#6366f1` | Checked state |
+| `--nf-color-primary` | `#0088FF` | Checked state |
 | `--nf-color-border` | `#e2e8f0` | Unchecked border |
 | `--nf-spacing-2` | `0.5rem` | Spacing in groups |
 

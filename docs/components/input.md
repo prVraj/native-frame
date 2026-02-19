@@ -157,7 +157,7 @@ No modifier needed.
 | `--nf-color-border` | `#e2e8f0` | Input border |
 | `--nf-color-bg` | `#ffffff` | Input background |
 | `--nf-color-text` | `#0f172a` | Input text |
-| `--nf-color-primary` | `#6366f1` | Focus ring color |
+| `--nf-color-primary` | `#0088FF` | Focus ring color |
 | `--nf-color-danger` | `#dc2626` | Error border |
 | `--nf-spacing-3` | `0.75rem` | Input padding |
 | `--nf-radius-md` | `8px` | Input border radius |

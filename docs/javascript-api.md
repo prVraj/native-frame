@@ -121,7 +121,7 @@ Shows a toast notification.
 - `message` (string) — Toast message text
 - `options` (object, optional):
   - `type` (string) — `'success'`, `'error'`, `'warning'`, `'info'` (default: `'info'`)
-  - `duration` (number) — Auto-dismiss time in ms (default: `4000`, use `0` for persistent)
+  - `duration` (number) — Auto-dismiss time in ms (default: `6000`, use `0` for persistent)
   - `dismissible` (boolean) — Show close button (default: `true`)
   - `position` (string) — `'bottom-right'`, `'bottom-left'`, `'top-right'`, `'top-left'` (default: `'bottom-right'`)
 
@@ -462,9 +462,10 @@ All custom events are dispatched on the target element and bubble up the DOM.
 ## Browser compatibility
 
 The JavaScript API uses modern browser features:
+
 - ES6+ syntax
 - `CustomEvent`
-- `IntersectionObserver` (for tooltips)
+- `WeakMap`
 - `aria-*` attributes
 
 Supports Chrome/Edge 90+, Firefox 88+, Safari 14+.

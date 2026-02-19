@@ -266,7 +266,7 @@ All default color combinations meet WCAG AA standards (4.5:1 for normal text, 3:
 - Text on light background: `#0f172a` on `#ffffff` (16.1:1) ✓
 - Muted text on light: `#64748b` on `#ffffff` (5.3:1) ✓
 - Text on dark background: `#f1f5f9` on `#0f172a` (14.4:1) ✓
-- Primary button: `#ffffff` on `#6366f1` (6.2:1) ✓
+- Primary button: `#ffffff` on `#0088FF` (4.6:1) ✓
 
 ### Test your custom colors
 

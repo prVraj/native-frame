@@ -191,9 +191,9 @@ Buttons use these design tokens:
 
 | Variable | Default | Usage |
 |----------|---------|-------|
-| `--nf-color-primary` | `#6366f1` | Primary button background |
-| `--nf-color-primary-hover` | `#4f46e5` | Primary button hover |
-| `--nf-color-primary-active` | `#4338ca` | Primary button active |
+| `--nf-color-primary` | `#0088FF` | Primary button background |
+| `--nf-color-primary-hover` | `#0070D6` | Primary button hover |
+| `--nf-color-primary-active` | `#005BB0` | Primary button active |
 | `--nf-color-text-inverse` | `#ffffff` | Button text color |
 | `--nf-spacing-3` | `0.75rem` | Button padding (vertical) |
 | `--nf-spacing-4` | `1rem` | Button padding (horizontal) |

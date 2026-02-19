@@ -38,10 +38,10 @@ All design tokens are prefixed with `--nf-` and defined on the `:root` element. 
 ### Colors — Primary
 
 ```css
---nf-color-primary: #6366f1;
---nf-color-primary-hover: #4f46e5;
---nf-color-primary-active: #4338ca;
---nf-color-primary-subtle: #eef2ff;
+--nf-color-primary: #0088FF;
+--nf-color-primary-hover: #0070D6;
+--nf-color-primary-active: #005BB0;
+--nf-color-primary-subtle: #E5F3FF;
 ```
 
 ### Colors — Semantic
@@ -139,6 +139,8 @@ All design tokens are prefixed with `--nf-` and defined on the `:root` element. 
 Override tokens on the `:root` element to apply changes across your entire site.
 
 ### Example: Change the primary color
+
+The default primary is `#0088FF`. To use a different brand color, override all four tokens:
 
 ```html
 <style>
@@ -246,7 +248,7 @@ If you want to let users toggle dark mode manually (regardless of OS preference)
     --nf-color-border: #334155;
     --nf-color-border-strong: #475569;
     
-    --nf-color-primary-subtle: #1e1b4b;
+    --nf-color-primary-subtle: #0A2540;
     --nf-color-success-subtle: #052e16;
     --nf-color-warning-subtle: #451a03;
     --nf-color-danger-subtle: #450a0a;
