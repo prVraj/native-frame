@@ -9,6 +9,17 @@
     "no-descending-specificity": null,
     "selector-pseudo-class-no-unknown": [true, {
       "ignorePseudoClasses": ["global"]
-    }]
+    }],
+    "value-keyword-case": null,
+    "color-function-notation": null,
+    "alpha-value-notation": null,
+    "color-hex-length": null,
+    "custom-property-empty-line-before": null,
+    "property-no-vendor-prefix": null,
+    "selector-not-notation": null,
+    "media-feature-range-notation": null,
+    "declaration-block-no-redundant-longhand-properties": null,
+    "declaration-empty-line-before": null,
+    "rule-empty-line-before": null
   }
 }
